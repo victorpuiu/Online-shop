@@ -4,11 +4,12 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import victorpuiu.realestateapp.dto.LoginDto;
+import victorpuiu.realestateapp.dto.UserDto;
 import victorpuiu.realestateapp.entity.User;
 import victorpuiu.realestateapp.exception.AuthException;
+import victorpuiu.realestateapp.mapper.UserMapper;
 import victorpuiu.realestateapp.model.LoginRequest;
-import victorpuiu.realestateapp.repository.LoginRepository;
+import victorpuiu.realestateapp.repository.UserRepository;
 
 import java.util.Optional;
 
@@ -17,16 +18,16 @@ import java.util.Optional;
 @Primary
 public class LoginServiceDummy implements LoginService {
 
-    private final LoginRepository loginRepository;
+    private final UserRepository userRepository;
 
-    public LoginServiceDummy(LoginRepository loginRepository) {
-        this.loginRepository = loginRepository;
+    public LoginServiceDummy(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public LoginDto login(LoginRequest loginRequest) {
+    public UserDto login(LoginRequest loginRequest) {
 
-        Optional<User> userOptional = this.loginRepository.findByUsername(loginRequest.getUsername());
+        Optional<User> userOptional = this.userRepository.findByUsername(loginRequest.getUsername());
         //TODO hash the frontend password and then compare with the saved password
 
         User user = userOptional.orElseThrow(() -> new IllegalStateException("No user found!"));
@@ -34,7 +35,7 @@ public class LoginServiceDummy implements LoginService {
             throw new AuthException(HttpStatus.UNAUTHORIZED, "Incorrect Pass");
         }
 
-        return null;
+        return UserMapper.toUserDto(user);
     }
 
 

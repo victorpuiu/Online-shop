@@ -1,11 +1,11 @@
 package victorpuiu.realestateapp.service;
 
-import victorpuiu.realestateapp.dto.LoginDto;
+import victorpuiu.realestateapp.dto.UserDto;
 import victorpuiu.realestateapp.model.LoginRequest;
 
 public interface LoginService {
 
-    LoginDto login(LoginRequest loginRequest);
+    UserDto login(LoginRequest loginRequest);
 
 
 }
