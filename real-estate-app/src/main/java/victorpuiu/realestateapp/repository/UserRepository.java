@@ -1,11 +1,10 @@
 package victorpuiu.realestateapp.repository;
-
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import victorpuiu.realestateapp.entity.User;
 
 import java.util.Optional;
 
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String username);
 
