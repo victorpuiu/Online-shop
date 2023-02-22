@@ -2,7 +2,8 @@ package victorpuiu.realestateapp.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Timestamp;
@@ -10,8 +11,9 @@ import java.sql.Timestamp;
 /**
  * The account resource with specified user details
  */
-@Data
 @Entity(name = "account")
+@Getter
+@Setter
 public class Account {
 
     @Id
