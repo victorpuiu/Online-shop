@@ -26,7 +26,6 @@ public class Address {
 
     private String zipcode;
 
-
     private String number;
 
 }
