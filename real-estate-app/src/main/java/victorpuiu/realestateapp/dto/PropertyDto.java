@@ -3,6 +3,7 @@ package victorpuiu.realestateapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import victorpuiu.realestateapp.entity.PropertyType;
 
 /**
  * The resource representing a property.
@@ -12,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class PropertyDto {
 
-    private String propertyType;
+    private PropertyType propertyType;
 
     private String description;
 
