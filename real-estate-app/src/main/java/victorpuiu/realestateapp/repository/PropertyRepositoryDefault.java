@@ -1,5 +1,7 @@
 package victorpuiu.realestateapp.repository;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,9 +15,15 @@ import java.util.function.Function;
 
 public class PropertyRepositoryDefault implements PropertyRepository {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
+
     @Override
     public List<Property> findByPriceLessThanOrEqual(Double max) {
-        return null;
+        return entityManager.createQuery("SELECT p FROM property p WHERE p.price <= :max", Property.class)
+                .setParameter("max", max)
+                .getResultList();
     }
 
     @Override
