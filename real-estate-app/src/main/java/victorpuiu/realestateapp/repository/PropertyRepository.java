@@ -15,9 +15,9 @@ import java.util.List;
 public interface PropertyRepository extends JpaRepository<Property,Long> {
 
 
-    List<Property> findByPriceLessThanOrEqual(Double max);
+    List<Property> findByPriceLessThan (Double max);
 
-    List<Property> findByPriceGreaterThanOrEqual(Double min);
+    List<Property> findByPriceGreaterThan(Double min);
 
     List<Property> findByPriceBetween(Double min, Double max);
 }
