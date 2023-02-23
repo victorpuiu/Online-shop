@@ -13,9 +13,9 @@ public interface PropertyService {
 
    void deleteProperty(long id);
 
-   List<Property> getPropertiesWithPriceLessThanOrEqual(Double max);
+   List<Property> getPropertiesWithPriceLessThan(Double max);
 
-   List<Property> getPropertiesWithPriceGreaterThanOrEqual(Double min);
+   List<Property> getPropertiesWithPriceGreaterThan(Double min);
 
    List<Property> getPropertiesWithinPriceRange(Double min, Double max);
 
