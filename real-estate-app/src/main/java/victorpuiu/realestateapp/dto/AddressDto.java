@@ -20,6 +20,6 @@ public class AddressDto {
 
     private String zipcode;
 
-    private String houseNumber;
+    private String number;
 
 }
