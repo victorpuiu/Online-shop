@@ -13,7 +13,6 @@ import victorpuiu.realestateapp.repository.PropertyRepository;
 import victorpuiu.realestateapp.service.PropertyServiceDefault;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("properties")
@@ -32,24 +31,14 @@ public class PropertyController {
         this.propertyMapper = propertyMapper;
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<PropertyDto>> getAllProperties(
             @RequestParam(required = false) final Double min,
-            @RequestParam(required = false) final Double max) {
-        List<Property> properties;
-        if (min == null && max == null){
-            properties = service.getAllProperties();
-        } else if (min == null) {
-            properties =  service.getPropertiesWithPriceLessThanOrEqual(max);
-        } else if (max == null) {
-            properties = service.getPropertiesWithPriceGreaterThanOrEqual(min);
-        } else {
-            properties = service.getPropertiesWithinPriceRange(min, max);
-        }
+            @RequestParam(required = false) final Double max)
+    {
 
         // Convert the Property objects to PropertyDto objects
-        List<PropertyDto> propertyDtos = properties.stream().map(property ->
-                propertyMapper.toPropertyDto((Property) properties)).collect(Collectors.toList());
+        List<PropertyDto> propertyDtos = service.getProperties(min, max);
 
         // Return a ResponseEntity with the list of PropertyDto objects and a 200 OK status code
         return ResponseEntity.ok(propertyDtos);
@@ -76,6 +65,7 @@ public class PropertyController {
         Property property = PropertyMapper.INSTANCE.toProperty(propertyDto);
 
         // Save the property to the database
+        //Need refactor because i used directly the propertyRepository and not service
         Property savedProperty = propertyRepository.save(property);
 
         // Map the saved property back to a DTO and return it
@@ -87,12 +77,14 @@ public class PropertyController {
     //The method returns a ResponseEntity<Void> with a 204 No Content status code if the
     // property is deleted successfully, or a 404 Not Found status code if the property is
     // not found.
-    @DeleteMapping("property/{id}")
+    @DeleteMapping("property/delete/{id}")
     public ResponseEntity<Void> deleteProperty(@PathVariable("id") Long id ){
         try {
             service.deleteProperty(id);
+            //HTTP status code of 404 (Not Found)
             return ResponseEntity.noContent().build();
         } catch (IllegalArgumentException exception){
+            //HTTP response with a status code of 204 (No Content).
             return ResponseEntity.notFound().build();
         }
     }

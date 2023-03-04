@@ -3,6 +3,7 @@ package victorpuiu.realestateapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import victorpuiu.realestateapp.entity.AdvertisementType;
 import victorpuiu.realestateapp.entity.PropertyType;
 
 /**
@@ -21,7 +22,7 @@ public class PropertyDto {
 
     private AddressDto address;
 
-    private String advertisementType;
+    private AdvertisementType advertisementType;
 
     private String image;
 

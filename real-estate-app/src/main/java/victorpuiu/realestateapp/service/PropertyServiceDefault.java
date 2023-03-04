@@ -12,71 +12,52 @@ import victorpuiu.realestateapp.repository.PropertyRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 
 @Service
 public class PropertyServiceDefault implements PropertyService {
-
 
     public static final String DEFAULT_PRICE = "0.00";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertyServiceDefault.class);
 
 
-    private final PropertyRepository repository;
+    private final PropertyRepository propertyRepository;
 
 
     @Autowired
-    public PropertyServiceDefault(PropertyRepository repository) {
-        this.repository = repository;
+    public PropertyServiceDefault(PropertyRepository propertyRepository) {
+        this.propertyRepository = propertyRepository;
     }
 
     @Override
     public PropertyDto findById(long id) {
-       Optional<Property> propertyOptional = repository.findById(id);
+       Optional<Property> propertyOptional = propertyRepository.findById(id);
        return propertyOptional.map(PropertyMapper.INSTANCE::toPropertyDto)
                .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
 
     }
 
-    @Override
-    public List<Property> getAllProperties() {
-        Iterable<Property> proprietiesIterable = repository.findAll();
-        List<Property> properties = StreamSupport.stream(proprietiesIterable.spliterator(), false)
-                .collect(Collectors.toList());
-        if (properties.isEmpty()) {
-            throw new IllegalArgumentException("There are no property entries in the repository.");
-        }
-        LOGGER.info("Requesting all properties");
-        return properties;
-
-    }
 
     @Override
     public void deleteProperty(long id) {
         // Check if the property exists
-        Optional<Property> optionalProperty = repository.findById(id);
+        Optional<Property> optionalProperty = propertyRepository.findById(id);
         if (!optionalProperty.isPresent()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Property does not exist");
         }
         // Delete the property
         Property property = optionalProperty.get();
-        repository.delete(property);
+        propertyRepository.delete(property);
     }
 
-    @Override
-    public List<Property> getPropertiesWithPriceLessThanOrEqual(Double max) {
-        return repository.findByPriceLessThanOrEqual(max);
-    }
 
     @Override
-    public List<Property> getPropertiesWithPriceGreaterThanOrEqual(Double min) {
-        return repository.findByPriceGreaterThanOrEqual(min);
-    }
+    public List<PropertyDto> getProperties(Double min, Double max) {
+        min = min == null ? min = 0d : min;
+        max = max == null ? max = (double)Integer.MAX_VALUE : max;
 
-    @Override
-    public List<Property> getPropertiesWithinPriceRange(Double min, Double max) {
-        return repository.findByPriceBetween(min, max);
+        return propertyRepository.findByPriceBetween(min, max).stream().map(property ->
+                PropertyMapper.INSTANCE.toPropertyDto(property)).collect(Collectors.toList());
     }
 }

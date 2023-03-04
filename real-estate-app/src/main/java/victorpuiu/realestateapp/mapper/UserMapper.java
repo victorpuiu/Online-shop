@@ -3,7 +3,7 @@ package victorpuiu.realestateapp.mapper;
 import victorpuiu.realestateapp.dto.UserDto;
 import victorpuiu.realestateapp.entity.User;
 
-public class UserMapper {
+public interface UserMapper {
     public static UserDto toUserDto(User user){
         if (user == null){
             return null;
