@@ -1,10 +1,9 @@
 
-
 const About = () => {
 
     return (
         <div>
-
+            heloooooo
         </div>
     );
 
