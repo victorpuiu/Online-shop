@@ -1,11 +1,14 @@
+import Hero from "../components/Hero";
+import Content from "../components/Content";
 
 
-const Home = () => {
+const Home = ({isOpen, toggle}) => {
 
     return (
-        <div>
-
-        </div>
+        <>
+           <Hero />
+           <Content />
+        </>
     );
 
 }
