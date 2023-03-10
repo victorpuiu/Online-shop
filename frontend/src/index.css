@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a {
+  font-family: "Nunito Sans", nunito-serif;
+}
+
+/* CONTENT */
+
+.section {
+  @apply bg-gray-100 h-full md:h-screen w-full;
+}
+
+.image-container {
+  @apply container mx-auto px-0 md:px-4 py-4;
+}
+
+.layout {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 justify-items-center gap-4;
+}
+
+.right-arrow {
+  @apply hidden md:block opacity-75 hover:opacity-100 absolute top-1/2 right-8 text-5xl text-yellow-500 z-10 cursor-pointer select-none;
+}
+
+.left-arrow {
+  @apply hidden md:block opacity-75 hover:opacity-100 absolute top-1/2 left-8 text-5xl text-yellow-500 z-10 cursor-pointer select-none;
+}
+
+.slide img {
+  @apply m-auto rounded-lg;
+}
+
+.slide {
+  @apply invisible md:visible scale-50 transform duration-300 opacity-50 shadow-lg rounded-lg border border-solid border-gray-400;
+}
+
+.active-slide {
+  @apply visible scale-100 hover:scale-105 opacity-100 md:p-5 md:my-10 my-5 p-2;
+}
+
+.listing-content {
+  @apply pb-20 w-screen md:h-screen;
+  /* min-height: 47rem */
+}
+
+.listing-description {
+  @apply md:block hidden text-gray-400 px-3;
+}
+
+/* FOOTER */
+
+.footer {
+  @apply bg-black text-white;
+}
+
+.footer-content {
+  @apply grid md:grid-cols-2 md:columns-2 m-5 md:gap-0 py-5;
+}
+
+.copyright {
+  @apply bottom-0 flex justify-center items-center h-16 flex-col md:px-0 md:border-0 px-5 border-t-2 border-gray-300;
+}
+
+.contact-form {
+  @apply flex flex-col items-start justify-center;
+}
+
+.contact-information {
+  @apply flex flex-col items-start justify-center;
+}
+
+.social {
+  @apply flex flex-row gap-5 pb-5;
+}
+
+.privacy-policy {
+  @apply self-center text-center md:self-start md:text-left;
+}
