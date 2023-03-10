@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {Dropdown} from "./Dropdown";
 
 const Navbar = ({ toggle, isOpen }) => {
   return (
@@ -102,7 +101,6 @@ const Navbar = ({ toggle, isOpen }) => {
           <span>Search</span>
         </div>
       </div>
-      <Dropdown isOpen={isOpen} toggle={toggle} />
 
     </>
   );
