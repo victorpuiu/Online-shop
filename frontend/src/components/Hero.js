@@ -3,21 +3,23 @@ import {Link} from "react-router-dom";
 import Background from "../images/hero-background.jpg";
 import Navbar from "./Navbar";
 
-const Hero = ({ isOpen, toggle }) => {
+const Hero = () => {
   return (
     <>
       <div
-        style={{ backgroundImage: `url(${Background})` }}
-        className="justify-center items-center bg-no-repeat bg-cover bg-center h-screen"
+          className="justify-center items-center bg-no-repeat bg-cover bg-center h-screen mx-20"
+
+          style={{ backgroundImage: `url(${Background})` }}
       >
-        <Navbar classname="top-0" isOpen={isOpen} toggle={toggle} />
+        <Navbar classname="top-0" />
         <div className="flex flex-col h-screen justify-center items-center">
-          <h1 className="lg:text-8xl md:text-7xl text-5xl text-white mb-14">
-            ESTATE-GURU
-          </h1>
+          {/*<h1 className="lg:text-8xl md:text-7xl text-5xl text-yellow-300 mb-14">*/}
+          {/*  ESTATE-GURU*/}
+          {/*</h1>*/}
           <Link
             to="/"
-            className=" md:text-3xl md:px-10 md:py-6 px-5 py-3 text-xl bg-yellow-500 rounded-full hover:bg-yellow-300 transition duration-300 ease-in-out animate-bounce flex gap-x-2 justify-between items-center"
+            className=" md:text-3xl md:px-10 md:py-6 px-5 py-3 text-xl bg-yellow-500 rounded-full hover:bg-yellow-300
+            transition duration-300 ease-in-out animate-bounce flex gap-x-2 justify-between items-center"
           >
             <p className="text-">Go to Marketplace</p>
             <svg
