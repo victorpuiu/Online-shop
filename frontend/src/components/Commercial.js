@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Navbar from "./Navbar";
-import commercialHouse from "../images/commercial.jpg";
+import commercial from "../images/commercial.jpg";
 
 const Commercial = () => {
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
@@ -41,7 +41,7 @@ const Commercial = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                     Commercial Real Estate
-                    <img src={commercialHouse} alt="Beautiful House" className="w-1/2 h-48 rounded-lg object-cover" />
+                    <img src={commercial} alt="Commercial" className="w-1/2 h-48 rounded-lg object-cover" />
 
                 </h2>
                 <div className="flex items-center justify-between mb-4">
