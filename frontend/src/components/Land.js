@@ -41,7 +41,7 @@ const Land = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                     Land Real Estate
-                    <img src={land} alt="land" className="w-1/2 h-48 rounded-lg object-cover" />
+                    <img src={land} alt="Land" className="w-1/2 h-48 rounded-lg object-cover" />
 
                 </h2>
                 <div className="flex items-center justify-between mb-4">
