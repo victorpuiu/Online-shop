@@ -25,6 +25,7 @@ const categories = [
 ];
 
 export const Categories = () => {
+
     return (
         <>
             <Navbar />
