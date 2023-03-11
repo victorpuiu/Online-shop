@@ -7,17 +7,17 @@ const Hero = () => {
   return (
     <>
       <div
-          className="justify-center items-center bg-no-repeat bg-cover bg-center h-screen mx-20"
-
+          className="justify-center items-center bg-no-repeat bg-cover bg-center  mx-20"
           style={{ backgroundImage: `url(${Background})` }}
       >
         <Navbar classname="top-0" />
-        <div className="flex flex-col h-screen justify-center items-center">
+
+        <div className="flex flex-col h-96 justify-center items-center">
           {/*<h1 className="lg:text-8xl md:text-7xl text-5xl text-yellow-300 mb-14">*/}
           {/*  ESTATE-GURU*/}
           {/*</h1>*/}
           <Link
-            to="/"
+            to="/marketplace"
             className=" md:text-3xl md:px-10 md:py-6 px-5 py-3 text-xl bg-yellow-500 rounded-full hover:bg-yellow-300
             transition duration-300 ease-in-out animate-bounce flex gap-x-2 justify-between items-center"
           >
