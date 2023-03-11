@@ -33,7 +33,7 @@ const Content = () => {
       <div className="my-4">
         <h1 className="text-center text-4xl pt-5 ">Latest Listings</h1>
       </div>
-      <div className="h-48">
+      <div>
         <Slider {...settings} className="top-1/4">
           {listings.map((listing, index) => (
             <div
