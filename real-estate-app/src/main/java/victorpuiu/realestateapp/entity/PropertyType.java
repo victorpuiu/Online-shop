@@ -12,7 +12,9 @@ public enum PropertyType {
     ROOM,
 //            ("Room"),
     LAND,
-//            ("Land");
+//            ("Land")
+    COMMERCIAL,
+//            ;
 
 
 //    private String value;
