@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
       <header
-        className="flex text-xl bg-white justify-between items-center h-16 p-6 pr-32 pl-20 sticky top-0 z-10
+        className="flex text-xl bg-white justify-between items-center h-16 p-6 pr-32 pl-32 sticky top-0 z-10
         backdrop-filter backdrop-blur-lg text-black shadow-sm font-mono z-2"
         role="navigation"
       >
@@ -75,19 +75,19 @@ const Navbar = () => {
 
 
       <div
-          className="flex items-center p-6 pr-32 pl-16 space-x-6 bg-white shadow-lg hover:shadow-xl transform
+          className="flex items-center p-6 pr-32 pl-28 space-x-1 bg-white shadow-lg hover:shadow-xl transform
           transition duration-500">
 
         {/*hover:scale-105*/}
         {/*<div className="flex-grow"></div>*/}
 
         <Link to="/" className="pr-32 text-left">
-          <img src={logoImage} alt="Logo" className="inline-block align-middle flex-shrink-0"/>
+          <img src={logoImage} alt="Logo" className="inline-block align-middle flex-shrink-0 "/>
         </Link>
 
         <div className="flex border-2 border-black rounded-xl shadow-lg hover:shadow-xl transform transition duration-500">
 
-          <div className="flex ml-96 p-4 w-72 space-x-4 rounded-lg">
+          <div className="flex ml-20 p-4 w-72 space-x-4 rounded-lg">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 opacity-30" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -109,9 +109,11 @@ const Navbar = () => {
 
         <button
             type="submit"
-            className="bg-blue-400 py-3 px-5 text-white font-semi-bold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+            className="bg-blue-400 border-2 border-black py-4 px-8 pl-10 text-white font-semi-bold rounded-lg hover:shadow-lg transition
+            duration-3000 cursor-pointer">
           <span className="flex-grow p-6">Search</span>
         </button>
+        <span className="font-sans p-4">Advanced</span>
       </div>
 
     </>
