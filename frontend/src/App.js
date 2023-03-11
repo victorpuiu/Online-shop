@@ -8,6 +8,7 @@ import {Sell} from "./pages/sell";
 import {Marketplace} from "./pages/marketplace";
 import {Contact} from "./pages/contact";
 import Residential from "./components/Residential";
+import Commercial from "./components/Commercial";
 
 function App() {
 
@@ -42,6 +43,8 @@ function App() {
         <Route path="/sell" element={<Sell />} />
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/residential" element={<Residential />}/>
+        <Route path="/commercial" element={<Commercial />}/>
+
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
