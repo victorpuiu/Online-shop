@@ -4,6 +4,10 @@ import "./App.css";
 import {Footer} from "./components/Footer";
 import {About} from "./pages/about";
 import Home from "./pages/home";
+import {Sell} from "./pages/sell";
+import {Marketplace} from "./pages/marketplace";
+import {Contact} from "./pages/contact";
+import Residential from "./components/Residential";
 
 function App() {
 
@@ -35,6 +39,10 @@ function App() {
           path="/about"
           element={<About isOpen={isOpen} toggle={toggle} />}
         />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/residential" element={<Residential />}/>
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </div>
