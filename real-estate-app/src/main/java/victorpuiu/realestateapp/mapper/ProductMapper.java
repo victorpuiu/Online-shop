@@ -7,12 +7,12 @@ import victorpuiu.realestateapp.entity.Product;
 
 
 @Mapper
-public interface PropertyMapper {
-    PropertyMapper INSTANCE = Mappers.getMapper(PropertyMapper.class);
+public interface ProductMapper {
+    ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
-    ProductDto toPropertyDto(Product product);
+    ProductDto toProductDto(Product product);
 
-    Product toProperty(ProductDto productDto);
+    Product toProduct(ProductDto productDto);
 
 
 }

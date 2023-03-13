@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
-import victorpuiu.realestateapp.mapper.PropertyMapper;
+import victorpuiu.realestateapp.mapper.ProductMapper;
 import victorpuiu.realestateapp.repository.PropertyRepository;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class ProductServiceDefault implements ProductService {
     @Override
     public ProductDto findById(long id) {
        Optional<Product> propertyOptional = propertyRepository.findById(id);
-       return propertyOptional.map(PropertyMapper.INSTANCE::toPropertyDto)
+       return propertyOptional.map(ProductMapper.INSTANCE::toProductDto)
                .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
 
     }
@@ -58,6 +58,6 @@ public class ProductServiceDefault implements ProductService {
         max = max == null ? max = (double)Integer.MAX_VALUE : max;
 
         return propertyRepository.findByPriceBetween(min, max).stream().map(property ->
-                PropertyMapper.INSTANCE.toPropertyDto(property)).collect(Collectors.toList());
+                ProductMapper.INSTANCE.toProductDto(property)).collect(Collectors.toList());
     }
 }
