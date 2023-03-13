@@ -4,13 +4,13 @@ import victorpuiu.realestateapp.dto.ProductDto;
 
 import java.util.List;
 
-public interface PropertyService {
+public interface ProductService {
 
    ProductDto findById(long id);
 
-   void deleteProperty(long id);
+   void deleteById(long id);
 
 
-   List<ProductDto> getProperties(Double min, Double max);
+   List<ProductDto> getProducts(Double min, Double max);
 
 }

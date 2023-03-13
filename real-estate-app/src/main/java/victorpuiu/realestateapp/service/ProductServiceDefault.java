@@ -15,18 +15,18 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class PropertyServiceDefault implements PropertyService {
+public class ProductServiceDefault implements ProductService {
 
     public static final String DEFAULT_PRICE = "0.00";
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PropertyServiceDefault.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceDefault.class);
 
 
     private final PropertyRepository propertyRepository;
 
 
     @Autowired
-    public PropertyServiceDefault(PropertyRepository propertyRepository) {
+    public ProductServiceDefault(PropertyRepository propertyRepository) {
         this.propertyRepository = propertyRepository;
     }
 
@@ -40,7 +40,7 @@ public class PropertyServiceDefault implements PropertyService {
 
 
     @Override
-    public void deleteProperty(long id) {
+    public void deleteById(long id) {
         // Check if the property exists
         Optional<Product> optionalProperty = propertyRepository.findById(id);
         if (!optionalProperty.isPresent()){
@@ -53,7 +53,7 @@ public class PropertyServiceDefault implements PropertyService {
 
 
     @Override
-    public List<ProductDto> getProperties(Double min, Double max) {
+    public List<ProductDto> getProducts(Double min, Double max) {
         min = min == null ? min = 0d : min;
         max = max == null ? max = (double)Integer.MAX_VALUE : max;
 

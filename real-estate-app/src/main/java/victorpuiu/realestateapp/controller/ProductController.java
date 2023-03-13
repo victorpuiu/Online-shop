@@ -10,7 +10,7 @@ import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.PropertyMapper;
 import victorpuiu.realestateapp.repository.PropertyRepository;
-import victorpuiu.realestateapp.service.PropertyServiceDefault;
+import victorpuiu.realestateapp.service.ProductServiceDefault;
 
 import java.util.List;
 
@@ -18,12 +18,12 @@ import java.util.List;
 @RequestMapping("products")
 public class ProductController {
 
-    private final PropertyServiceDefault service;
+    private final ProductServiceDefault service;
     private final PropertyRepository propertyRepository;
     private final PropertyMapper propertyMapper;
 
     @Autowired
-    public ProductController(PropertyServiceDefault service,
+    public ProductController(ProductServiceDefault service,
                              PropertyRepository propertyRepository,
                              PropertyMapper propertyMapper) {
         this.service = service;
@@ -38,7 +38,7 @@ public class ProductController {
     {
 
         // Convert the Property objects to PropertyDto objects
-        List<ProductDto> productDtos = service.getProperties(min, max);
+        List<ProductDto> productDtos = service.getProducts(min, max);
 
         // Return a ResponseEntity with the list of PropertyDto objects and a 200 OK status code
         return ResponseEntity.ok(productDtos);
@@ -80,7 +80,7 @@ public class ProductController {
     @DeleteMapping("product/delete/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id ){
         try {
-            service.deleteProperty(id);
+            service.deleteById(id);
             //HTTP status code of 404 (Not Found)
             return ResponseEntity.noContent().build();
         } catch (IllegalArgumentException exception){
