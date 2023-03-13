@@ -15,20 +15,20 @@ import victorpuiu.realestateapp.service.ProductServiceDefault;
 import java.util.List;
 
 @Controller
-@RequestMapping("products")
+@RequestMapping("markets/{marketId}/categories/{categoryId}/products")
 public class ProductController {
 
     private final ProductServiceDefault service;
-    private final ProductRepository propertyRepository;
-    private final ProductMapper propertyMapper;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     @Autowired
     public ProductController(ProductServiceDefault service,
-                             ProductRepository propertyRepository,
-                             ProductMapper propertyMapper) {
+                             ProductRepository productRepository,
+                             ProductMapper productMapper) {
         this.service = service;
-        this.propertyRepository = propertyRepository;
-        this.propertyMapper = propertyMapper;
+        this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
     @GetMapping()
@@ -44,12 +44,12 @@ public class ProductController {
         return ResponseEntity.ok(productDtos);
     }
 
-    @GetMapping("product/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable long id){
         return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping("product/saveOrEdit")
+    @PostMapping("saveOrEdit")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto){
         //validate the input
         if (productDto.getPropertyType() == null || productDto.getPropertyType().toString().isEmpty()){
@@ -66,7 +66,7 @@ public class ProductController {
 
         // Save the property to the database
         //Need refactor because i used directly the propertyRepository and not service
-        Product savedProduct = propertyRepository.save(product);
+        Product savedProduct = productRepository.save(product);
 
         // Map the saved property back to a DTO and return it
         ProductDto savedProductDto = ProductMapper.INSTANCE.toProductDto(savedProduct);
@@ -77,7 +77,7 @@ public class ProductController {
     //The method returns a ResponseEntity<Void> with a 204 No Content status code if the
     // property is deleted successfully, or a 404 Not Found status code if the property is
     // not found.
-    @DeleteMapping("product/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id ){
         try {
             service.deleteById(id);
