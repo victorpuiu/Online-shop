@@ -15,24 +15,24 @@ import victorpuiu.realestateapp.service.PropertyServiceDefault;
 import java.util.List;
 
 @Controller
-@RequestMapping("properties")
-public class PropertyController {
+@RequestMapping("products")
+public class ProductController {
 
     private final PropertyServiceDefault service;
     private final PropertyRepository propertyRepository;
     private final PropertyMapper propertyMapper;
 
     @Autowired
-    public PropertyController(PropertyServiceDefault service,
-                              PropertyRepository propertyRepository,
-                              PropertyMapper propertyMapper) {
+    public ProductController(PropertyServiceDefault service,
+                             PropertyRepository propertyRepository,
+                             PropertyMapper propertyMapper) {
         this.service = service;
         this.propertyRepository = propertyRepository;
         this.propertyMapper = propertyMapper;
     }
 
     @GetMapping()
-    public ResponseEntity<List<ProductDto>> getAllProperties(
+    public ResponseEntity<List<ProductDto>> getAllProducts(
             @RequestParam(required = false) final Double min,
             @RequestParam(required = false) final Double max)
     {
@@ -44,13 +44,13 @@ public class PropertyController {
         return ResponseEntity.ok(productDtos);
     }
 
-    @GetMapping("property/{id}")
-    public ResponseEntity<ProductDto> getProperty(@PathVariable long id){
+    @GetMapping("product/{id}")
+    public ResponseEntity<ProductDto> getProduct(@PathVariable long id){
         return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping("property/saveOrEdit")
-    public ResponseEntity<ProductDto> createProperty(@RequestBody ProductDto productDto){
+    @PostMapping("product/saveOrEdit")
+    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto){
         //validate the input
         if (productDto.getPropertyType() == null || productDto.getPropertyType().toString().isEmpty()){
             throw new IllegalArgumentException("Property cannot be empty");
@@ -77,8 +77,8 @@ public class PropertyController {
     //The method returns a ResponseEntity<Void> with a 204 No Content status code if the
     // property is deleted successfully, or a 404 Not Found status code if the property is
     // not found.
-    @DeleteMapping("property/delete/{id}")
-    public ResponseEntity<Void> deleteProperty(@PathVariable("id") Long id ){
+    @DeleteMapping("product/delete/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id ){
         try {
             service.deleteProperty(id);
             //HTTP status code of 404 (Not Found)
