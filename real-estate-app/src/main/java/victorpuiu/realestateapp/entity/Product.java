@@ -37,6 +37,8 @@ public class Product {
     private Timestamp updatedAt;
 
 
+    @ManyToOne
+    private MarketCategory marketCategory;
 
 
 
