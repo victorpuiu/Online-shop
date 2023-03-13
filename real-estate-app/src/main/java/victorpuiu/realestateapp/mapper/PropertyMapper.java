@@ -3,16 +3,16 @@ package victorpuiu.realestateapp.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import victorpuiu.realestateapp.dto.PropertyDto;
-import victorpuiu.realestateapp.entity.Property;
+import victorpuiu.realestateapp.entity.Product;
 
 
 @Mapper
 public interface PropertyMapper {
     PropertyMapper INSTANCE = Mappers.getMapper(PropertyMapper.class);
 
-    PropertyDto toPropertyDto(Property property);
+    PropertyDto toPropertyDto(Product product);
 
-    Property toProperty(PropertyDto propertyDto);
+    Product toProperty(PropertyDto propertyDto);
 
 
 }

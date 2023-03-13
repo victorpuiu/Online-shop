@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import victorpuiu.realestateapp.dto.PropertyDto;
-import victorpuiu.realestateapp.entity.Property;
+import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.PropertyMapper;
 import victorpuiu.realestateapp.repository.PropertyRepository;
 
@@ -32,7 +32,7 @@ public class PropertyServiceDefault implements PropertyService {
 
     @Override
     public PropertyDto findById(long id) {
-       Optional<Property> propertyOptional = propertyRepository.findById(id);
+       Optional<Product> propertyOptional = propertyRepository.findById(id);
        return propertyOptional.map(PropertyMapper.INSTANCE::toPropertyDto)
                .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
 
@@ -42,13 +42,13 @@ public class PropertyServiceDefault implements PropertyService {
     @Override
     public void deleteProperty(long id) {
         // Check if the property exists
-        Optional<Property> optionalProperty = propertyRepository.findById(id);
+        Optional<Product> optionalProperty = propertyRepository.findById(id);
         if (!optionalProperty.isPresent()){
             throw new IllegalArgumentException("Property does not exist");
         }
         // Delete the property
-        Property property = optionalProperty.get();
-        propertyRepository.delete(property);
+        Product product = optionalProperty.get();
+        propertyRepository.delete(product);
     }
 
 

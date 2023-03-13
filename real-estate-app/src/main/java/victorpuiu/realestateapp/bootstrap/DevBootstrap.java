@@ -4,7 +4,7 @@ package victorpuiu.realestateapp.bootstrap;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import victorpuiu.realestateapp.entity.Property;
+import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.repository.PropertyRepository;
 
 @Component
@@ -20,9 +20,9 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         for (int i = 0; i < 10 ; i++) {
-            Property property = new Property();
-            property.setDescription("des" + i);
-            propertyRepository.save(property);
+            Product product = new Product();
+            product.setDescription("des" + i);
+            propertyRepository.save(product);
         }
 
         //lifeHook

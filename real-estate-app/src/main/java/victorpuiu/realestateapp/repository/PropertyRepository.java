@@ -1,7 +1,7 @@
 package victorpuiu.realestateapp.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import victorpuiu.realestateapp.entity.Property;
+import victorpuiu.realestateapp.entity.Product;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import java.util.List;
  */
 
 @Repository
-public interface PropertyRepository extends JpaRepository<Property,Long> {
+public interface PropertyRepository extends JpaRepository<Product,Long> {
 
 
-    List<Property> findByPriceLessThan (Double max);
+    List<Product> findByPriceLessThan (Double max);
 
-    List<Property> findByPriceGreaterThan(Double min);
+    List<Product> findByPriceGreaterThan(Double min);
 
-    List<Property> findByPriceBetween(Double min, Double max);
+    List<Product> findByPriceBetween(Double min, Double max);
 }

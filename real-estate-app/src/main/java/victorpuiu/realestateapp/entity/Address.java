@@ -30,6 +30,6 @@ public class Address {
     private String number;
 
     @OneToOne(mappedBy = "address")
-    private Property property;
+    private Product product;
 
 }

@@ -9,8 +9,8 @@ import org.springframework.data.annotation.CreatedDate;
 import java.sql.Timestamp;
 
 @Data
-@Entity(name = "property")
-public class Property {
+@Entity(name = "product")
+public class Product {
 
 
     @Id

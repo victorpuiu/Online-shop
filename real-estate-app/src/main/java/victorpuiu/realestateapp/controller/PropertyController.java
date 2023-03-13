@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import victorpuiu.realestateapp.dto.PropertyDto;
-import victorpuiu.realestateapp.entity.Property;
+import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.PropertyMapper;
 import victorpuiu.realestateapp.repository.PropertyRepository;
 import victorpuiu.realestateapp.service.PropertyServiceDefault;
@@ -62,14 +62,14 @@ public class PropertyController {
             throw new IllegalArgumentException("Property price must be a valid positive number");
         }
         // Map the DTO to a domain model
-        Property property = PropertyMapper.INSTANCE.toProperty(propertyDto);
+        Product product = PropertyMapper.INSTANCE.toProperty(propertyDto);
 
         // Save the property to the database
         //Need refactor because i used directly the propertyRepository and not service
-        Property savedProperty = propertyRepository.save(property);
+        Product savedProduct = propertyRepository.save(product);
 
         // Map the saved property back to a DTO and return it
-        PropertyDto savedPropertyDto = PropertyMapper.INSTANCE.toPropertyDto(savedProperty);
+        PropertyDto savedPropertyDto = PropertyMapper.INSTANCE.toPropertyDto(savedProduct);
 
         return new ResponseEntity<>(savedPropertyDto, HttpStatus.CREATED);
     }
