@@ -12,7 +12,7 @@ import victorpuiu.realestateapp.entity.PropertyType;
 
 @Getter
 @Setter
-public class PropertyDto {
+public class ProductDto {
 
     private PropertyType propertyType;
 

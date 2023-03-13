@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import victorpuiu.realestateapp.dto.PropertyDto;
+import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.PropertyMapper;
 import victorpuiu.realestateapp.repository.PropertyRepository;
@@ -31,7 +31,7 @@ public class PropertyServiceDefault implements PropertyService {
     }
 
     @Override
-    public PropertyDto findById(long id) {
+    public ProductDto findById(long id) {
        Optional<Product> propertyOptional = propertyRepository.findById(id);
        return propertyOptional.map(PropertyMapper.INSTANCE::toPropertyDto)
                .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
@@ -53,7 +53,7 @@ public class PropertyServiceDefault implements PropertyService {
 
 
     @Override
-    public List<PropertyDto> getProperties(Double min, Double max) {
+    public List<ProductDto> getProperties(Double min, Double max) {
         min = min == null ? min = 0d : min;
         max = max == null ? max = (double)Integer.MAX_VALUE : max;
 
