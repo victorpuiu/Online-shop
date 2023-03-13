@@ -22,17 +22,17 @@ public class ProductServiceDefault implements ProductService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceDefault.class);
 
 
-    private final ProductRepository propertyRepository;
+    private final ProductRepository productRepository;
 
 
     @Autowired
-    public ProductServiceDefault(ProductRepository propertyRepository) {
-        this.propertyRepository = propertyRepository;
+    public ProductServiceDefault(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     @Override
     public ProductDto findById(long id) {
-       Optional<Product> propertyOptional = propertyRepository.findById(id);
+       Optional<Product> propertyOptional = productRepository.findById(id);
        return propertyOptional.map(ProductMapper.INSTANCE::toProductDto)
                .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
 
@@ -42,13 +42,13 @@ public class ProductServiceDefault implements ProductService {
     @Override
     public void deleteById(long id) {
         // Check if the property exists
-        Optional<Product> optionalProperty = propertyRepository.findById(id);
+        Optional<Product> optionalProperty = productRepository.findById(id);
         if (!optionalProperty.isPresent()){
             throw new IllegalArgumentException("Property does not exist");
         }
         // Delete the property
         Product product = optionalProperty.get();
-        propertyRepository.delete(product);
+        productRepository.delete(product);
     }
 
 
@@ -57,7 +57,7 @@ public class ProductServiceDefault implements ProductService {
         min = min == null ? min = 0d : min;
         max = max == null ? max = (double)Integer.MAX_VALUE : max;
 
-        return propertyRepository.findByPriceBetween(min, max).stream().map(property ->
+        return productRepository.findByPriceBetween(min, max).stream().map(property ->
                 ProductMapper.INSTANCE.toProductDto(property)).collect(Collectors.toList());
     }
 }
