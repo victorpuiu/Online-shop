@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.ProductMapper;
-import victorpuiu.realestateapp.repository.PropertyRepository;
+import victorpuiu.realestateapp.repository.ProductRepository;
 import victorpuiu.realestateapp.service.ProductServiceDefault;
 
 import java.util.List;
@@ -19,12 +19,12 @@ import java.util.List;
 public class ProductController {
 
     private final ProductServiceDefault service;
-    private final PropertyRepository propertyRepository;
+    private final ProductRepository propertyRepository;
     private final ProductMapper propertyMapper;
 
     @Autowired
     public ProductController(ProductServiceDefault service,
-                             PropertyRepository propertyRepository,
+                             ProductRepository propertyRepository,
                              ProductMapper propertyMapper) {
         this.service = service;
         this.propertyRepository = propertyRepository;

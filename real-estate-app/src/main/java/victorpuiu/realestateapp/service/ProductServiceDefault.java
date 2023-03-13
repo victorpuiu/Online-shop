@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.ProductMapper;
-import victorpuiu.realestateapp.repository.PropertyRepository;
+import victorpuiu.realestateapp.repository.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,11 +22,11 @@ public class ProductServiceDefault implements ProductService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceDefault.class);
 
 
-    private final PropertyRepository propertyRepository;
+    private final ProductRepository propertyRepository;
 
 
     @Autowired
-    public ProductServiceDefault(PropertyRepository propertyRepository) {
+    public ProductServiceDefault(ProductRepository propertyRepository) {
         this.propertyRepository = propertyRepository;
     }
 

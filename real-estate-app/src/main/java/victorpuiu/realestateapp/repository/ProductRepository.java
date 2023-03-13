@@ -12,10 +12,10 @@ import java.util.List;
  */
 
 @Repository
-public interface PropertyRepository extends JpaRepository<Product,Long> {
+public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
-    List<Product> findByPriceLessThan (Double max);
+    List<Product> findByPriceLessThan(Double max);
 
     List<Product> findByPriceGreaterThan(Double min);
 
