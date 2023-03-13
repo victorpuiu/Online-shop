@@ -4,7 +4,7 @@ package victorpuiu.realestateapp.dto;
 import lombok.Getter;
 import lombok.Setter;
 import victorpuiu.realestateapp.entity.AdvertisementType;
-import victorpuiu.realestateapp.entity.PropertyType;
+import victorpuiu.realestateapp.entity.ProductType;
 
 /**
  * The resource representing a property.
@@ -14,7 +14,7 @@ import victorpuiu.realestateapp.entity.PropertyType;
 @Setter
 public class ProductDto {
 
-    private PropertyType propertyType;
+    private ProductType propertyType;
 
     private String description;
 

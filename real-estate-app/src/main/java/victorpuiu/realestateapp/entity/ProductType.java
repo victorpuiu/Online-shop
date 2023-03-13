@@ -1,11 +1,11 @@
 package victorpuiu.realestateapp.entity;
 
-public enum PropertyType {
+public enum ProductType {
     DETACHED,
 //            ("Detached"),
     SEMI_DETACHED,
 //            ("Semi-detached"),
-    VILLA,
+//    VILLA,
 //            ("Villa"),
     APARTMENT,
 //            ("Apartment"),
@@ -14,7 +14,12 @@ public enum PropertyType {
     LAND,
 //            ("Land")
     COMMERCIAL,
-//            ;
+//
+    RESIDENTIAL,
+    HOUSE,
+    OFFICE_SPACE,
+    WAREHOUSE
+    ;
 
 
 //    private String value;
