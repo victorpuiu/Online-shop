@@ -31,11 +31,25 @@ public class ProductServiceDefault implements ProductService {
     }
 
     @Override
+    public List<ProductDto> getProducts(Double min, Double max) {
+        min = min == null ? min = 0d : min;
+        max = max == null ? max = (double)Integer.MAX_VALUE : max;
+
+        return productRepository.findByPriceBetween(min, max).stream()
+                .map(ProductMapper.INSTANCE::toProductDto).collect(Collectors.toList());
+    }
+
+    @Override
     public ProductDto findById(long id) {
-       Optional<Product> propertyOptional = productRepository.findById(id);
-       return propertyOptional.map(ProductMapper.INSTANCE::toProductDto)
+       Optional<Product> productOptional = productRepository.findById(id);
+       return productOptional.map(ProductMapper.INSTANCE::toProductDto)
                .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
 
+    }
+
+
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
     }
 
 
@@ -51,13 +65,4 @@ public class ProductServiceDefault implements ProductService {
         productRepository.delete(product);
     }
 
-
-    @Override
-    public List<ProductDto> getProducts(Double min, Double max) {
-        min = min == null ? min = 0d : min;
-        max = max == null ? max = (double)Integer.MAX_VALUE : max;
-
-        return productRepository.findByPriceBetween(min, max).stream().map(property ->
-                ProductMapper.INSTANCE.toProductDto(property)).collect(Collectors.toList());
-    }
 }
