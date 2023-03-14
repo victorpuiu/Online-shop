@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.ProductMapper;
-import victorpuiu.realestateapp.repository.ProductRepository;
 import victorpuiu.realestateapp.service.ProductServiceDefault;
 
 import java.util.List;
@@ -18,17 +17,11 @@ import java.util.List;
 @RequestMapping("markets/{marketId}/categories/{categoryId}/products")
 public class ProductController {
 
-    private final ProductServiceDefault service;
-    private final ProductRepository productRepository;
-    private final ProductMapper productMapper;
+    private final ProductServiceDefault productServiceDefault;
 
     @Autowired
-    public ProductController(ProductServiceDefault service,
-                             ProductRepository productRepository,
-                             ProductMapper productMapper) {
-        this.service = service;
-        this.productRepository = productRepository;
-        this.productMapper = productMapper;
+    public ProductController(ProductServiceDefault productServiceDefault) {
+        this.productServiceDefault = productServiceDefault;
     }
 
     @GetMapping()
@@ -38,7 +31,7 @@ public class ProductController {
     {
 
         // Convert the Property objects to PropertyDto objects
-        List<ProductDto> productDtos = service.getProducts(min, max);
+        List<ProductDto> productDtos = productServiceDefault.getProducts(min, max);
 
         // Return a ResponseEntity with the list of PropertyDto objects and a 200 OK status code
         return ResponseEntity.ok(productDtos);
@@ -46,7 +39,7 @@ public class ProductController {
 
     @GetMapping("{id}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable long id){
-        return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(productServiceDefault.findById(id), HttpStatus.OK);
     }
 
     @PostMapping("saveOrEdit")
@@ -65,8 +58,7 @@ public class ProductController {
         Product product = ProductMapper.INSTANCE.toProduct(productDto);
 
         // Save the property to the database
-        //Need refactor because i used directly the propertyRepository and not service
-        Product savedProduct = productRepository.save(product);
+        Product savedProduct = productServiceDefault.saveProduct(product);
 
         // Map the saved property back to a DTO and return it
         ProductDto savedProductDto = ProductMapper.INSTANCE.toProductDto(savedProduct);
@@ -80,7 +72,7 @@ public class ProductController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id ){
         try {
-            service.deleteById(id);
+            productServiceDefault.deleteById(id);
             //HTTP status code of 404 (Not Found)
             return ResponseEntity.noContent().build();
         } catch (IllegalArgumentException exception){
