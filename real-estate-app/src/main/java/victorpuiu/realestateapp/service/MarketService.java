@@ -1,4 +1,16 @@
 package victorpuiu.realestateapp.service;
 
-public class MarketService {
+import victorpuiu.realestateapp.dto.MarketDto;
+
+import java.util.List;
+
+public interface MarketService {
+
+    MarketDto findById(long id);
+
+    void deleteById(long id);
+
+
+    List<MarketDto> getMarkets();
+
 }
