@@ -7,35 +7,34 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import victorpuiu.realestateapp.dto.MarketDto;
-import victorpuiu.realestateapp.entity.Market;
-import victorpuiu.realestateapp.mapper.MarketMapper;
-import victorpuiu.realestateapp.service.MarketServiceDefault;
+import victorpuiu.realestateapp.service.MarketService;
 
 import java.util.List;
 
 @Controller
 @RequestMapping("markets")
+@CrossOrigin("http://localhost:3000/markets")
 public class MarketController {
 
-    private final MarketServiceDefault marketServiceDefault;
+    private final MarketService marketService;
 
 
     @Autowired
-    public MarketController(MarketServiceDefault marketServiceDefault) {
-        this.marketServiceDefault = marketServiceDefault;
+    public MarketController(MarketService marketService) {
+        this.marketService = marketService;
     }
 
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<MarketDto>> getAllMarkets() {
-        List<MarketDto> markets = marketServiceDefault.getMarkets();
+        List<MarketDto> markets = marketService.getMarkets();
 
         return ResponseEntity.ok(markets);
     }
 
     @GetMapping("id")
     public ResponseEntity<MarketDto> getMarket(@PathVariable long id) {
-        MarketDto market = marketServiceDefault.findById(id);
+        MarketDto market = marketService.findById(id);
         if (market == null) {
             return ResponseEntity.notFound().build();
         }
@@ -45,18 +44,15 @@ public class MarketController {
     @PostMapping("saveOrEdit")
     public ResponseEntity<MarketDto> createMarket(@RequestBody MarketDto marketDto){
 
-        Market market = MarketMapper.INSTANCE.toMarket(marketDto);
+        MarketDto savedMarket = marketService.saveOrEdit(marketDto);
 
-        Market savedMarket = marketServiceDefault.saveMarket(market);
-        MarketDto savedMarketDto = MarketMapper.INSTANCE.toMarketDto(savedMarket);
-
-        return new ResponseEntity<>(savedMarketDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedMarket, HttpStatus.CREATED);
 
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteMarket(@PathVariable("id") Long id ) {
-        marketServiceDefault.deleteById(id);
+        marketService.deleteById(id);
         return ResponseEntity.noContent().build();
 
     }
