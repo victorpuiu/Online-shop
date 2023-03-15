@@ -2,6 +2,7 @@ package victorpuiu.realestateapp.service;
 
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import victorpuiu.realestateapp.dto.MarketDto;
 import victorpuiu.realestateapp.entity.Market;
 import victorpuiu.realestateapp.mapper.MarketMapper;
@@ -35,9 +36,28 @@ public class MarketServiceDefault implements MarketService {
                 .orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
     }
 
-    public Market saveMarket(Market market) {
-        return marketRepository.save(market);
+
+    @Override
+    public MarketDto saveOrEdit(MarketDto marketDto) {
+        return marketRepository.findById(marketDto.getId() == null? 0 : marketDto.getId())
+                .map(market -> edit(market, marketDto))
+                .orElseGet(() -> save(marketDto));
     }
+
+    @Transactional
+    public MarketDto edit(Market market, MarketDto source){
+        Market toEdit = MarketMapper.INSTANCE.toMarket(source);
+
+        toEdit.setId(market.getId());
+        return MarketMapper.INSTANCE.toMarketDto(marketRepository.save(toEdit));
+
+    }
+
+    @Transactional
+    public MarketDto save(MarketDto marketDto){
+        return MarketMapper.INSTANCE.toMarketDto(marketRepository.save(MarketMapper.INSTANCE.toMarket(marketDto)));
+    }
+
 
     @Override
     public void deleteById(long id) {
