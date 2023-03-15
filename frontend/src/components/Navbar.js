@@ -97,7 +97,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex py-3 px-4 rounded-lg text-gray-500 font-semi-bold cursor-pointer">
-            <span>All categories</span>
+            <span>All markets</span>
 
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
