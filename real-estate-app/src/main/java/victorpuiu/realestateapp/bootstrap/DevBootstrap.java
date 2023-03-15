@@ -18,7 +18,10 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private final MarketCategoryService marketCategoryService;
     private final ProductService productService;
 
-    public DevBootstrap(MarketService marketService, MarketCategoryService marketCategoryService, ProductService productService) {
+    public DevBootstrap(
+            MarketService marketService,
+            MarketCategoryService marketCategoryService,
+            ProductService productService) {
         this.marketService = marketService;
         this.marketCategoryService = marketCategoryService;
         this.productService = productService;
