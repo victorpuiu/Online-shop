@@ -14,6 +14,7 @@ public interface MarketCategoryService {
 
     List<MarketCategoryDto> getCategories();
 
+    MarketCategoryDto saveOrEdit(MarketCategoryDto marketCategoryDto);
 
 
 }
