@@ -1,16 +1,24 @@
 package victorpuiu.realestateapp.dto;
 
-import victorpuiu.realestateapp.entity.Market;
-import victorpuiu.realestateapp.entity.Product;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
 
+@Getter
+@Setter
 public class MarketCategoryDto {
 
-    private Market market;
+    public Long id;
+    private Long marketId;
 
-    private List<Product> products = new ArrayList<>();
+    private String name;
+
+    private String imageUrl;
+
+    private String redirectLink;
+
+
+//    private List<ProductDto> products = new ArrayList<>();
 
 
 }
