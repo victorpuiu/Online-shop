@@ -1,6 +1,7 @@
 package victorpuiu.realestateapp.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import victorpuiu.realestateapp.dto.MarketCategoryDto;
 import victorpuiu.realestateapp.entity.MarketCategory;
 import victorpuiu.realestateapp.mapper.MarketCategoryMapper;
@@ -32,6 +33,7 @@ public class MarketCategoryServiceDefault implements MarketCategoryService{
                 .orElseGet(() -> save(marketCategoryDto));
     }
 
+    @Transactional
     public MarketCategoryDto edit(MarketCategory marketCategory, MarketCategoryDto marketCategoryDto){
         MarketCategory toEdit = MarketCategoryMapper.INSTANCE.toMarketCategory(marketCategoryDto);
         toEdit.setId(marketCategory.getId());
@@ -39,7 +41,7 @@ public class MarketCategoryServiceDefault implements MarketCategoryService{
         return MarketCategoryMapper.INSTANCE.toMarketCategoryDto(marketCategoryRepository.save(toEdit));
     }
 
-
+    @Transactional
     public MarketCategoryDto save(MarketCategoryDto marketCategoryDto) {
         return MarketCategoryMapper.INSTANCE
                 .toMarketCategoryDto(marketCategoryRepository
