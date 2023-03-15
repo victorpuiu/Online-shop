@@ -13,4 +13,6 @@ public interface MarketService {
 
     List<MarketDto> getMarkets();
 
+    MarketDto saveOrEdit(MarketDto marketDto);
+
 }
