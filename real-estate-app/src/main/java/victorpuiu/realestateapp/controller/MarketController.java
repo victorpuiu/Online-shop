@@ -13,11 +13,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("markets")
-@CrossOrigin("http://localhost:3000/markets")
+@CrossOrigin("http://localhost:3000/markets")//marketplace
 public class MarketController {
 
     private final MarketService marketService;
-
 
     @Autowired
     public MarketController(MarketService marketService) {
