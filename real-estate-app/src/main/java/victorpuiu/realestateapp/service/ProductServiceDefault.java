@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Product;
 import victorpuiu.realestateapp.mapper.ProductMapper;
@@ -49,7 +50,7 @@ public class ProductServiceDefault implements ProductService {
 
     }
 
-
+    @Transactional
     public ProductDto edit(Product product, ProductDto source) {
         Product toEdit = ProductMapper.INSTANCE.toProduct(source);
         toEdit.setId(product.getId());
@@ -57,6 +58,7 @@ public class ProductServiceDefault implements ProductService {
         return ProductMapper.INSTANCE.toProductDto(productRepository.save(toEdit));
     }
 
+    @Transactional
     public ProductDto save(ProductDto productDto) {
         return ProductMapper.INSTANCE
                 .toProductDto(productRepository.save(ProductMapper.INSTANCE.toProduct(productDto)));
