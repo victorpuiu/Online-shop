@@ -7,8 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import victorpuiu.realestateapp.dto.ProductDto;
-import victorpuiu.realestateapp.entity.Product;
-import victorpuiu.realestateapp.mapper.ProductMapper;
+import victorpuiu.realestateapp.service.ProductService;
 import victorpuiu.realestateapp.service.ProductServiceDefault;
 
 import java.util.List;
@@ -17,11 +16,11 @@ import java.util.List;
 @RequestMapping("markets/{marketId}/categories/{categoryId}/products")
 public class ProductController {
 
-    private final ProductServiceDefault productServiceDefault;
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductServiceDefault productServiceDefault) {
-        this.productServiceDefault = productServiceDefault;
+    public ProductController(ProductServiceDefault productService) {
+        this.productService = productService;
     }
 
     @GetMapping()
@@ -31,7 +30,7 @@ public class ProductController {
     {
 
         // Convert the Property objects to PropertyDto objects
-        List<ProductDto> productDtos = productServiceDefault.getProducts(min, max);
+        List<ProductDto> productDtos = productService.getProducts(min, max);
 
         // Return a ResponseEntity with the list of PropertyDto objects and a 200 OK status code
         return ResponseEntity.ok(productDtos);
@@ -39,7 +38,7 @@ public class ProductController {
 
     @GetMapping("{id}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable long id){
-        return new ResponseEntity<>(productServiceDefault.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(productService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping("saveOrEdit")
@@ -55,15 +54,15 @@ public class ProductController {
             throw new IllegalArgumentException("Property price must be a valid positive number");
         }
         // Map the DTO to a domain model
-        Product product = ProductMapper.INSTANCE.toProduct(productDto);
+//        Product product = ProductMapper.INSTANCE.toProduct(productDto);
 
         // Save the property to the database
-        Product savedProduct = productServiceDefault.saveProduct(product);
+        ProductDto savedProduct = productService.saveOrEdit(productDto);
 
         // Map the saved property back to a DTO and return it
-        ProductDto savedProductDto = ProductMapper.INSTANCE.toProductDto(savedProduct);
+//        ProductDto savedProductDto = ProductMapper.INSTANCE.toProductDto(savedProduct);
 
-        return new ResponseEntity<>(savedProductDto, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
     //The method returns a ResponseEntity<Void> with a 204 No Content status code if the
@@ -72,7 +71,7 @@ public class ProductController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id ){
         try {
-            productServiceDefault.deleteById(id);
+            productService.deleteById(id);
             //HTTP status code of 404 (Not Found)
             return ResponseEntity.noContent().build();
         } catch (IllegalArgumentException exception){
