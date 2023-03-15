@@ -26,7 +26,7 @@ private final MarketCategoryServiceDefault marketCategoryServiceDefault;
 
 
     @GetMapping
-    public ResponseEntity<List<MarketCategoryDto>> getAllCategories() {
+    public ResponseEntity<List<MarketCategoryDto>> getAllCategories( ) {
         List<MarketCategoryDto> categories = marketCategoryServiceDefault.getCategories();
 
         return ResponseEntity.ok(categories);
