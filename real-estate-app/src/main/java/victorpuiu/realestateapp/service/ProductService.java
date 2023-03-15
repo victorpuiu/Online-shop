@@ -13,4 +13,7 @@ public interface ProductService {
 
    List<ProductDto> getProducts(Double min, Double max);
 
+   ProductDto saveOrEdit(ProductDto productDto);
+
+
 }
