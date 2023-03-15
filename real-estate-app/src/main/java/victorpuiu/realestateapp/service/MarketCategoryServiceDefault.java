@@ -26,6 +26,28 @@ public class MarketCategoryServiceDefault implements MarketCategoryService{
     }
 
     @Override
+    public MarketCategoryDto saveOrEdit(MarketCategoryDto marketCategoryDto) {
+        return marketCategoryRepository.findById(marketCategoryDto.getId() == null ? 0 : marketCategoryDto.getId())
+                .map((marketCategory) -> edit(marketCategory, marketCategoryDto))
+                .orElseGet(() -> save(marketCategoryDto));
+    }
+
+    public MarketCategoryDto edit(MarketCategory marketCategory, MarketCategoryDto marketCategoryDto){
+        MarketCategory toEdit = MarketCategoryMapper.INSTANCE.toMarketCategory(marketCategoryDto);
+        toEdit.setId(marketCategory.getId());
+
+        return MarketCategoryMapper.INSTANCE.toMarketCategoryDto(marketCategoryRepository.save(toEdit));
+    }
+
+
+    public MarketCategoryDto save(MarketCategoryDto marketCategoryDto) {
+        return MarketCategoryMapper.INSTANCE
+                .toMarketCategoryDto(marketCategoryRepository
+                        .save(MarketCategoryMapper.INSTANCE.toMarketCategory(marketCategoryDto)));
+    }
+
+
+    @Override
     public MarketCategoryDto findById(long id) {
         Optional<MarketCategory> marketCategory = marketCategoryRepository.findById(id);
         if (!marketCategory.isPresent()) {
@@ -35,9 +57,6 @@ public class MarketCategoryServiceDefault implements MarketCategoryService{
                 .orElseThrow(() -> new IllegalArgumentException("Market Category does not exist"));
     }
 
-    public MarketCategory saveCategory(MarketCategory marketCategory) {
-        return marketCategoryRepository.save(marketCategory);
-    }
 
     @Override
     public void deleteById(long id) {
