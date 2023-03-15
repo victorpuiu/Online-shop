@@ -14,6 +14,8 @@ import victorpuiu.realestateapp.entity.ProductType;
 @Setter
 public class ProductDto {
 
+    private Long id;
+
     private ProductType propertyType;
 
     private String description;
