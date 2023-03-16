@@ -6,6 +6,7 @@ import victorpuiu.realestateapp.dto.MarketCategoryDto;
 import victorpuiu.realestateapp.entity.MarketCategory;
 import victorpuiu.realestateapp.mapper.MarketCategoryMapper;
 import victorpuiu.realestateapp.repository.MarketCategoryRepository;
+import victorpuiu.realestateapp.repository.MarketRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +15,12 @@ import java.util.stream.Collectors;
 @Service
 public class MarketCategoryServiceDefault implements MarketCategoryService{
     private final MarketCategoryRepository marketCategoryRepository;
+    private final MarketRepository marketRepository;
 
-    public MarketCategoryServiceDefault(MarketCategoryRepository marketCategoryRepository) {
+    public MarketCategoryServiceDefault(MarketCategoryRepository marketCategoryRepository,
+                                        MarketRepository marketRepository) {
         this.marketCategoryRepository = marketCategoryRepository;
+        this.marketRepository = marketRepository;
     }
 
     @Override
