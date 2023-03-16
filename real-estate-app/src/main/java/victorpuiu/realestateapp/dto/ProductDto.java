@@ -28,4 +28,7 @@ public class ProductDto {
 
     private String image;
 
+    private MarketCategoryDto marketCategoryDto;
+
+
 }
