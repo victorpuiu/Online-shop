@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("markets/{marketId}/categories")
+@CrossOrigin(origins ="http://localhost:3000")
 public class CategoryController {
 
 private final MarketCategoryService marketCategoryService;
