@@ -12,6 +12,9 @@ public interface MarketCategoryMapper {
 
     MarketCategoryMapper INSTANCE = Mappers.getMapper(MarketCategoryMapper.class);
 
+    @Mappings({
+            @Mapping(target = "marketId", source = "market.id")
+    })
     MarketCategoryDto toMarketCategoryDto(MarketCategory marketCategory);
 
     @Mappings({
