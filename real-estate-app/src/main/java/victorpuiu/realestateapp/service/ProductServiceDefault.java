@@ -50,6 +50,13 @@ public class ProductServiceDefault implements ProductService {
 
     }
 
+//    @Override
+//    public List<ProductDto> getFirst10Products() {
+//        List<Product> products = productRepository.findFirst10ByOrderByIdAsc();
+//
+//        return products.stream().map(ProductMapper.INSTANCE::toProductDto).collect(Collectors.toList());
+//    }
+
     @Transactional
     public ProductDto edit(Product product, ProductDto source) {
         Product toEdit = ProductMapper.INSTANCE.toProduct(source);
