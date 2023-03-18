@@ -35,6 +35,7 @@ public class Product {
     private String image;
 
     @CreatedDate
+    @UpdateTimestamp
     private Timestamp createdAt;
 
     @UpdateTimestamp
