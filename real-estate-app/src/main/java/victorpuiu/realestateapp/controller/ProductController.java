@@ -14,6 +14,8 @@ import java.util.List;
 
 @Controller
 @RequestMapping("markets/{marketId}/categories/{categoryId}/products")
+@CrossOrigin(origins ="http://localhost:3000")
+
 public class ProductController {
 
     private final ProductService productService;
@@ -35,6 +37,13 @@ public class ProductController {
         // Return a ResponseEntity with the list of PropertyDto objects and a 200 OK status code
         return ResponseEntity.ok(productDtos);
     }
+
+
+//    @GetMapping()
+//    public ResponseEntity<List<ProductDto>> getFirst10Products() {
+//        List<ProductDto> productDtos = productService.getFirst10Products();
+//        return ResponseEntity.ok(productDtos);
+//    }
 
     @GetMapping("{id}")
     public ResponseEntity<ProductDto> getProduct(@PathVariable long id){
