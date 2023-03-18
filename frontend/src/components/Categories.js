@@ -46,9 +46,7 @@ export const Categories = () => {
                     setCategories(response.data)
                 });
             // setCategories(categories.data);
-
         }
-
     };
 
 
