@@ -35,65 +35,69 @@ export const ContentCategories = () => {
 
     return (
 
-        <div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-            <div className="relative inline-block w-1/3">
-                <select
-                    id="state"
-                    className="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                    value={selectedState}
-                    onChange={handleStateChange}
-                >
-                    <option value="">Select a state/province</option>
-                    {states.map((state) => (
-                        <option key={state} value={state}>
-                            {state}
-                        </option>
-                    ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg
-                        className="fill-current h-4 w-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
+            <div className="flex items-center mb-4 mr-24">
+
+                <div className="relative inline-block w-1/2">
+                    <select
+                        id="state"
+                        className="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                        value={selectedState}
+                        onChange={handleStateChange}
                     >
-                        <path
-                            fillRule="even-odd"
-                            d="M10 4a1 1 0 011 1v8.586l3.707-3.707a1 1 0 011.414 1.414l-4.707 4.707a.997.997 0 01-1.414 0L5.879 10.293a1 1 0 011.414-1.414L9 12.586V5a1 1 0 011-1z"
-                            clipRule="even-odd"
-                        />
-                    </svg>
+                        <option value="">Select a state/province</option>
+                        {states.map((state) => (
+                            <option key={state} value={state}>
+                                {state}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg
+                            className="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                        >
+                            <path
+                                fillRule="even-odd"
+                                d="M10 4a1 1 0 011 1v8.586l3.707-3.707a1 1 0 011.414 1.414l-4.707 4.707a.997.997 0 01-1.414 0L5.879 10.293a1 1 0 011.414-1.414L9 12.586V5a1 1 0 011-1z"
+                                clipRule="even-odd"
+                            />
+                        </svg>
+                    </div>
                 </div>
-            </div>
-            <div className="relative inline-block w-1/4">
-                <select
-                    id="price-range"
-                    className="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2
-                            pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                    value={selectedPriceRange}
-                    onChange={handlePriceFilter}
-                >
-                    <option value="">Select price range</option>
-                    {priceRanges.map((range) => (
-                        <option key={range} value={range}>
-                            {range}
-                        </option>
-                    ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg
-                        className="fill-current h-4 w-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
+                <div className="relative inline-block w-1/2 ml-4">
+                    <select
+                        id="price-range"
+                        className="w-full appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2
+                                pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                        value={selectedPriceRange}
+                        onChange={handlePriceFilter}
                     >
-                        <path
-                            fillRule="even-odd"
-                            d="M10 4a1 1 0 011 1v8.586l3.707-3.707a1 1 0 011.414 1.414l-4.707 4.707a.997.997 0 01-1.414
-                                    0L5.879 10.293a1 1 0 011.414-1.414L9 12.586V5a1 1 0 011-1z"
-                            clipRule="even-odd"
-                        />
-                    </svg>
+                        <option value="">Select price range</option>
+                        {priceRanges.map((range) => (
+                            <option key={range} value={range}>
+                                {range}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg
+                            className="fill-current h-4 w-4"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                        >
+                            <path
+                                fillRule="even-odd"
+                                d="M10 4a1 1 0 011 1v8.586l3.707-3.707a1 1 0 011.414 1.414l-4.707 4.707a.997.997 0 01-1.414
+                                        0L5.879 10.293a1 1 0 011.414-1.414L9 12.586V5a1 1 0 011-1z"
+                                clipRule="even-odd"
+                            />
+                        </svg>
+                    </div>
                 </div>
+
             </div>
 
         </div>
