@@ -31,7 +31,6 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         this.productService = productService;
     }
 
-
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
@@ -65,20 +64,76 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         land = marketCategoryService.saveOrEdit(land);
 
 
-        ProductDto productDto = new ProductDto();
-        productDto.setPropertyType(ProductType.APARTMENT);
-        productDto.setDescription("A beautiful apartment in the heart of the city");
-        productDto.setPrice(200000);
-        productDto.setMarketCategoryDto(residential);// ???????
+        ProductDto house1 = new ProductDto();
+        house1.setPropertyType(ProductType.HOUSE);
+        house1.setDescription("A beautiful house1 in the heart of the city");
+        house1.setPrice(500000);
+        house1.setMarketCategoryDto(residential);// ???????
+        AddressDto address1 = new AddressDto();
+        address1.setCity("New York");
+        address1.setStreet("Fifth Avenue");
+        address1.setZipcode("10001");
+        house1.setAddress(address1);
+        house1.setAdvertisementType(AdvertisementType.SALE);
+        house1.setImage("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+        house1 = productService.saveOrEdit(house1);
 
-        AddressDto addressDto = new AddressDto();
-        addressDto.setCity("New York");
-        addressDto.setStreet("Fifth Avenue");
-        addressDto.setZipcode("10001");
 
-        productDto.setAddress(addressDto);
-        productDto.setAdvertisementType(AdvertisementType.SALE);
-        productDto = productService.saveOrEdit(productDto);
+        ProductDto house2 = new ProductDto();
+        house2.setPropertyType(ProductType.HOUSE);
+        house2.setDescription("A beautiful house2 in the heart of the city");
+        house2.setPrice(550000);
+        house2.setMarketCategoryDto(residential);// ???????
+        AddressDto address2 = new AddressDto();
+        address2.setCity("DC");
+        address2.setStreet("Two Avenue");
+        address2.setZipcode("5001");
+        house2.setAddress(address2);
+        house2.setAdvertisementType(AdvertisementType.SALE);
+        house2.setImage("https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGx1eGVyeSUyMGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+        house2 = productService.saveOrEdit(house2);
+
+        ProductDto house3 = new ProductDto();
+        house3.setPropertyType(ProductType.HOUSE);
+        house3.setDescription("A beautiful house3 in the heart of the city");
+        house3.setPrice(575000);
+        house3.setMarketCategoryDto(residential);// ???????
+        AddressDto address3 = new AddressDto();
+        address3.setCity("NY");
+        address3.setStreet("Three Avenue");
+        address3.setZipcode("4637");
+        house3.setAddress(address3);
+        house3.setAdvertisementType(AdvertisementType.SALE);
+        house3.setImage("https://images.unsplash.com/photo-1549517045-bc93de075e53?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+        house3 = productService.saveOrEdit(house3);
+
+        ProductDto house4 = new ProductDto();
+        house4.setPropertyType(ProductType.HOUSE);
+        house4.setDescription("A beautiful house4 in the heart of the city");
+        house4.setPrice(1000000);
+        house4.setMarketCategoryDto(residential);// ???????
+        AddressDto address4 = new AddressDto();
+        address4.setCity("CH");
+        address4.setStreet("For Avenue");
+        address4.setZipcode("7684");
+        house4.setAddress(address4);
+        house4.setAdvertisementType(AdvertisementType.SALE);
+        house4.setImage("https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+        house4 = productService.saveOrEdit(house4);
+
+        ProductDto house5 = new ProductDto();
+        house5.setPropertyType(ProductType.HOUSE);
+        house5.setDescription("A beautiful house5 in the heart of the city");
+        house5.setPrice(700000);
+        house5.setMarketCategoryDto(residential);// ???????
+        AddressDto address5 = new AddressDto();
+        address5.setCity("MI");
+        address5.setStreet("Five Avenue");
+        address5.setZipcode("8694");
+        house5.setAddress(address5);
+        house5.setAdvertisementType(AdvertisementType.SALE);
+        house5.setImage("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+        house5 = productService.saveOrEdit(house5);
 
 
         //lifeHook
