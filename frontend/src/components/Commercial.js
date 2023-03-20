@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Navbar from "./Navbar";
 import commercial from "../images/commercial.jpg";
-import {ContentCategories} from "./ContentCategories";
+import {SearchCategories} from "./SearchCategories";
 
 const Commercial = () => {
 
@@ -53,7 +53,7 @@ const Commercial = () => {
                         </div>
                     </div>
 
-                    <ContentCategories/>
+                    <SearchCategories/>
 
                 </div>
             </div>
