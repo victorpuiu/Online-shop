@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-export const ContentCategories = () => {
+export const SearchCategories = () => {
 
     // const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [selectedState, setSelectedState] = useState('');
