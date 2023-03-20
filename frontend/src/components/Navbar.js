@@ -1,8 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import logoImage from "../images/logo.png";
+import axios from "axios";
 
 const Navbar = () => {
+
+  const [markets, setMarkets] = useState([]);
+
+  const handleMarketChange = (event) => {
+    setMarkets(event.target.value);
+  };
+
+  const loadMarkets = async () => {
+    try{
+      const result = await axios.get("http://localhost:8080/markets");
+      // console.log(result);
+      setMarkets(result.data);
+    } catch (errMarkets) {
+      console.error(errMarkets)
+    }
+  }
+  useEffect(() => {
+    loadMarkets();
+  }, []);
+
+
   return (
     <>
       <header
@@ -97,15 +119,24 @@ const Navbar = () => {
           </div>
 
           <div className="flex py-3 px-4 rounded-lg text-gray-500 font-semi-bold cursor-pointer">
-            <span>All markets</span>
+            <select
+                id="market"
+                value={markets}
+                onChange={handleMarketChange}
+            >
+              <option>All markets</option>
+              {/*{markets.map((market, index) => (*/}
+              {/*    <option key={index} value={market}>*/}
+              {/*      {market}*/}
+              {/*    </option>*/}
+              {/*)*/}
+              {/*)}*/}
+            </select>
 
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                 stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </div>
           </div>
 
+
+        </div>
 
         <button
             type="submit"
