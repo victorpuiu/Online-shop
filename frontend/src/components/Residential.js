@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "./Navbar";
 import beautifulHouse from "../images/beautifulHouse.jpg";
-import {ContentCategories} from "./ContentCategories";
+import {SearchCategories} from "./SearchCategories";
 import axios from "axios";
 import ProductsResidential from "./ProductsResidential";
 
@@ -14,6 +14,9 @@ const Residential = () => {
     const handleSubcategoryChange = (event) => {
         setSelectedSubcategory(event.target.value);
     };
+
+
+
 
     const [marketId, setMarketId] = useState();
 
@@ -28,14 +31,12 @@ const Residential = () => {
             result.data.forEach(market => market.name === "Real Estate" ? setMarketId(market.id) : "");
         }
     }
-
     const loadCategoryId = async () => {
         const result = await axios.get("http://localhost:8080/markets/" + marketId + "/categories");
         if (result.data) {
             result.data.forEach(category => category.name === "Residential" ? setCategoryId(category.id) : "");
         }
     }
-
     const loadProducts = async () => {
         try{
             const result = await axios.get("http://localhost:8080/markets/"
@@ -50,8 +51,6 @@ const Residential = () => {
         loadMarketId();
     }, []);
 
-
-
     useEffect(() => {
         loadCategoryId();
     }, []);
@@ -59,6 +58,7 @@ const Residential = () => {
     useEffect(() => {
         loadProducts();
     }, []);
+
 
 
 
@@ -102,18 +102,15 @@ const Residential = () => {
                             </svg>
                         </div>
                     </div>
-                    <ContentCategories/>
+                    <SearchCategories/>
                 </div>
+
             </div>
 
             <ProductsResidential products={products}/>
-
         </>
-
-
 );
 
 };
-
 
 export default Residential;
