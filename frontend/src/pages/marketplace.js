@@ -1,10 +1,11 @@
-import {Categories} from "../components/Categories";
+import ContentMarketCategories from "../components/ContentMarketsCategories";
 
 export const Marketplace = () => {
 
     return (
         <div>
-            <Categories />
+            {/*<RealEstateCategories />*/}
+            <ContentMarketCategories />
         </div>
 
     );
