@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Navbar from "./Navbar";
 import land from "../images/land.jpg";
-import {ContentCategories} from "./ContentCategories";
+import {SearchCategories} from "./SearchCategories";
 
 const Land = () => {
 
@@ -53,7 +53,7 @@ const Land = () => {
                         </div>
                     </div>
 
-                    <ContentCategories/>
+                    <SearchCategories/>
 
                 </div>
             </div>
