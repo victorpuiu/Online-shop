@@ -10,6 +10,7 @@ import {Contact} from "./pages/contact";
 import Residential from "./components/Residential";
 import Commercial from "./components/Commercial";
 import Land from "./components/Land";
+import {RealEstateCategories} from "./components/RealEstateCategories";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
         />
         <Route path="/sell" element={<Sell />} />
         <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/real-estate" element={<RealEstateCategories/>} />
         <Route path="/residential" element={<Residential />}/>
         <Route path="/commercial" element={<Commercial />}/>
         <Route path="/land" element={<Land />} />
