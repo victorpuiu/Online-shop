@@ -1,6 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import Background from "../images/hero-background.jpg";
+import antique from "../images/antique.jpg"
+import realEstate from "../images/realEstate.jpeg"
+import watches from "../images/watche.jpg"
 import Navbar from "./Navbar";
 
 const Hero = () => {
@@ -38,6 +41,27 @@ const Hero = () => {
             </svg>
           </Link>
         </div>
+
+        <div className="bg-gray-100 py-8">
+          <h2 className="text-3xl font-bold text-left mb-8">Explore Popular Categories</h2>
+          <div className="flex flex-wrap justify-start gap-8">
+            <Link to="/real-estate" className="text-center">
+              <img src={realEstate} alt="real-estate" className="rounded-full h-24 w-24 mb-2" />
+              <p className="text-xl font-bold">Real Estate</p>
+            </Link>
+            <Link to="/category2" className="text-center">
+              <img src={watches} alt="Category 2" className="rounded-full h-24 w-24 mb-2" />
+              <p className="text-xl font-bold">Watches</p>
+            </Link>
+            <Link to="/category3" className="text-center">
+              <img src={antique} alt="Category 3" className="rounded-full h-24 w-24 mb-2" />
+              <p className="text-xl font-bold">Antiques</p>
+            </Link>
+          </div>
+        </div>
+
+
+
       </div>
     </>
   );
