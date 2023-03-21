@@ -8,6 +8,8 @@ export const RealEstateCategories = () => {
 
     const [categories, setCategories] = useState([]);
 
+    // console.log(categories);
+
     useEffect(() => {
         loadCategories();
     }, []);
@@ -18,7 +20,7 @@ export const RealEstateCategories = () => {
 
         if (result.data) {
             let mainMarket = null;
-            result.data.forEach(market => market.name === "Real Estate" ? mainMarket = market : "");
+            result.data.forEach(market => market.name === "real-estate" ? mainMarket = market : "");
             axios.get("http://localhost:8080/markets/" + mainMarket.id + "/categories")
                 .then(response => {
                     setCategories(response.data)
