@@ -28,7 +28,7 @@ const Residential = () => {
         const result = await axios.get("http://localhost:8080/markets")
         if (result.data) {
             // let marketId = null;
-            result.data.forEach(market => market.name === "Real Estate" ? setMarketId(market.id) : "");
+            result.data.forEach(market => market.name === "Real-Estate" ? setMarketId(market.id) : "");
         }
     }
     const loadCategoryId = async () => {
