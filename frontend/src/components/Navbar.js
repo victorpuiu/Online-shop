@@ -1,25 +1,45 @@
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import logoImage from "../images/logo.png";
 import axios from "axios";
 
 const Navbar = () => {
 
+  const [selectedMarket, setSelectedMarket] = useState("");
+
   const [markets, setMarkets] = useState([]);
 
+  const navigate = useNavigate();
+
   const handleMarketChange = (event) => {
-    setMarkets(event.target.value);
+    // console.log(markets);
+
+    const selectedMarketName = event.target.value;
+    const selectedMarket = markets.find((market) => market.name === selectedMarketName);
+
+    console.log(markets);
+    console.log(selectedMarketName);
+    console.log(selectedMarket);
+
+    // setMarkets(selectedMarketName);
+    setSelectedMarket(selectedMarketName);
+
+    if (selectedMarketName === "All markets") {
+      navigate("/");
+    } else{
+      navigate(`/${selectedMarketName}`);
+    }
   };
 
   const loadMarkets = async () => {
-    try{
-      const result = await axios.get("http://localhost:8080/markets");
-      // console.log(result);
-      setMarkets(result.data);
-    } catch (errMarkets) {
-      console.error(errMarkets)
+    try {
+      const response = await axios.get("http://localhost:8080/markets");
+      setMarkets([{ id: 0, name: "All markets" }, ...response.data]);
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
+
   useEffect(() => {
     loadMarkets();
   }, []);
@@ -119,18 +139,28 @@ const Navbar = () => {
           </div>
 
           <div className="flex py-3 px-4 rounded-lg text-gray-500 font-semi-bold cursor-pointer">
-            <select
-                id="market"
-                value={markets}
-                onChange={handleMarketChange}
-            >
-              <option>All markets</option>
-              {/*{markets.map((market, index) => (*/}
-              {/*    <option key={index} value={market}>*/}
-              {/*      {market}*/}
-              {/*    </option>*/}
-              {/*)*/}
-              {/*)}*/}
+
+            {/*<select*/}
+            {/*    onChange={handleMarketChange}*/}
+            {/*>*/}
+            {/*  <option value="All markets" key="All markets" >All markets</option>*/}
+            {/*  {Array.isArray(markets) && markets.map((market, index) => (*/}
+
+            {/*      <option key={market.id} value={market.name}>*/}
+            {/*          {market.name}*/}
+            {/*      </option>*/}
+            {/*  )*/}
+            {/*  )}*/}
+            {/*</select>*/}
+
+
+            <select onChange={handleMarketChange} value={selectedMarket}>
+              {markets.map((market, index) => (
+                  <option key={market.id} value={market.name}>
+                   {/*<option key={market.id} value={market.name} selected={selectedMarket === market.name}>*/}
+                    {market.name}
+                  </option>
+              ))}
             </select>
 
           </div>
