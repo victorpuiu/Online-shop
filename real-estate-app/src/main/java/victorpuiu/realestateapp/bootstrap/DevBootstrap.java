@@ -35,7 +35,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
         MarketDto realEstateMarket = new MarketDto();
-        realEstateMarket.setName("Real Estate");
+        realEstateMarket.setName("real-estate");
         realEstateMarket =  marketService.saveOrEdit(realEstateMarket);
 
         MarketDto watchesMarket = new MarketDto();
