@@ -15,9 +15,6 @@ const Residential = () => {
         setSelectedSubcategory(event.target.value);
     };
 
-
-
-
     const [marketId, setMarketId] = useState();
 
     const [categoryId, setCategoryId] = useState();
@@ -58,6 +55,7 @@ const Residential = () => {
     useEffect(() => {
         loadProducts();
     }, []);
+
 
 
 
