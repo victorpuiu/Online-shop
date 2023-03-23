@@ -1,5 +1,7 @@
 package victorpuiu.realestateapp.entity;
 
+
+
 public enum ProductType {
     DETACHED,
 //            ("Detached"),
@@ -22,27 +24,14 @@ public enum ProductType {
     ;
 
 
-//    private String value;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+//    @Column(name = "id", nullable = false)
+//    private Long id;
 //
-//    PropertyType(String value) {
-//        this.value = value;
+//    public void setId(Long id) {
+//        this.id = id;
 //    }
-//
-//    public String getValue() {
-//        return value;
-//    }
-//
-//    public static PropertyType fromValue(final String value) {
-//        for (final PropertyType type : PropertyType.values()) {
-//            if (type.getValue().equals(value)) {
-//                return type;
-//            }
-//        }
-//        throw new IllegalArgumentException("No matching constant for [" + value + "]");
-//    }
-//
-//
-
 }
 
 
