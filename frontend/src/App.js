@@ -4,13 +4,14 @@ import "./App.css";
 import {Footer} from "./components/Footer";
 import {About} from "./pages/about";
 import Home from "./pages/home";
-import {Sell} from "./pages/sell";
 import {Marketplace} from "./pages/marketplace";
 import {Contact} from "./pages/contact";
 import Residential from "./components/Residential";
 import Commercial from "./components/Commercial";
 import Land from "./components/Land";
 import {RealEstateCategories} from "./components/RealEstateCategories";
+import Sell from "./pages/sell";
+import Suggest from "./components/Suggest";
 
 function App() {
 
@@ -42,7 +43,9 @@ function App() {
           path="/about"
           element={<About isOpen={isOpen} toggle={toggle} />}
         />
-        <Route path="/sell" element={<Sell />} />
+        <Route path="/sell" element={<Suggest />} />
+        <Route path="/list-items" element={<Sell />} />
+
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/real-estate" element={<RealEstateCategories/>} />
         <Route path="/residential" element={<Residential />}/>
