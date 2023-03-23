@@ -6,9 +6,9 @@ package victorpuiu.realestateapp.entity;
 public enum AdvertisementType {
 
     SALE,
-//            ("SALE"),
+//            ("Sale"),
     RENT
-//            ("RENT");
+//            ("Rent");
 
 //
 //    private String value;
