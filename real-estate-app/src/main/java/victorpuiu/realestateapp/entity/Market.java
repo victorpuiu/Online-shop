@@ -18,6 +18,8 @@ public class Market {
 
     private String name;
 
+    private String imageUrl;
+
     @OneToMany(mappedBy = "market")
     private List<MarketCategory> marketCategories =  new ArrayList<>();
 }
