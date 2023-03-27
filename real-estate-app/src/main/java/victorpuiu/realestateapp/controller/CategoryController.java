@@ -26,8 +26,8 @@ private final MarketCategoryService marketCategoryService;
 
 
     @GetMapping
-    public ResponseEntity<List<MarketCategoryDto>> getAllCategories( ) {
-        List<MarketCategoryDto> categories = marketCategoryService.getCategories();
+    public ResponseEntity<List<MarketCategoryDto>> getAllCategories(@PathVariable long marketId) {
+        List<MarketCategoryDto> categories = marketCategoryService.getCategories(marketId);
 
         return ResponseEntity.ok(categories);
     }
