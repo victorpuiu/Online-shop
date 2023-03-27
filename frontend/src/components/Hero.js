@@ -4,7 +4,6 @@ import Background from "../images/hero-background.jpg";
 import antique from "../images/antique.jpg"
 import realEstate from "../images/realEstate.jpeg"
 import watches from "../images/watche.jpg"
-import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
@@ -13,18 +12,17 @@ const Hero = () => {
           className="justify-center items-center bg-no-repeat bg-cover bg-center  mx-20"
           style={{ backgroundImage: `url(${Background})` }}
       >
-        <Navbar classname="top-0" />
 
         <div className="flex flex-col h-96 justify-center items-center">
           {/*<h1 className="lg:text-8xl md:text-7xl text-5xl text-yellow-300 mb-14">*/}
           {/*  ESTATE-GURU*/}
           {/*</h1>*/}
           <Link
-            to="/marketplace"
+            to="/marketplaces"
             className=" md:text-3xl md:px-10 md:py-6 px-5 py-3 text-xl bg-yellow-500 rounded-full hover:bg-yellow-300
             transition duration-300 ease-in-out animate-bounce flex gap-x-2 justify-between items-center"
           >
-            <p className="text-">Go to Marketplace</p>
+            <p className="text-">Go to Marketplaces</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="md:h-8 md:w-8 h-5 w-5"
