@@ -14,6 +14,8 @@ import victorpuiu.realestateapp.service.MarketCategoryService;
 import victorpuiu.realestateapp.service.MarketService;
 import victorpuiu.realestateapp.service.ProductService;
 
+
+
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -36,10 +38,14 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         MarketDto realEstateMarket = new MarketDto();
         realEstateMarket.setName("real-estate");
+        realEstateMarket.setImageUrl("https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU");
+
         realEstateMarket =  marketService.saveOrEdit(realEstateMarket);
 
         MarketDto watchesMarket = new MarketDto();
         watchesMarket.setName("Watches");
+        watchesMarket.setImageUrl("https://unsplash.com/photos/LWPPpkn6NEQ");
+
         watchesMarket = marketService.saveOrEdit(watchesMarket);
 
         MarketCategoryDto residential = new MarketCategoryDto();
@@ -62,6 +68,17 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         land.setRedirectLink("/land");
         land.setMarketId(realEstateMarket.getId());
         land = marketCategoryService.saveOrEdit(land);
+
+
+        MarketCategoryDto men = new MarketCategoryDto();
+        men.setName("Men's watches");
+        men.setImageUrl("https://unsplash.com/photos/LWPPpkn6NEQ");
+        men.setRedirectLink("/");
+        men.setMarketId(watchesMarket.getId());
+        men = marketCategoryService.saveOrEdit(men);
+
+
+
 
 
         ProductDto house1 = new ProductDto();
