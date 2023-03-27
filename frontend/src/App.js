@@ -4,14 +4,11 @@ import "./App.css";
 import {Footer} from "./components/Footer";
 import {About} from "./pages/about";
 import Home from "./pages/home";
-import {Marketplace} from "./pages/marketplace";
+import {Marketplaces} from "./pages/marketplaces";
 import {Contact} from "./pages/contact";
-import Residential from "./components/Residential";
-import Commercial from "./components/Commercial";
-import Land from "./components/Land";
 import {RealEstateCategories} from "./components/RealEstateCategories";
-import Sell from "./pages/sell";
-import Suggest from "./components/Suggest";
+import Navbar from "./components/Navbar";
+import Categories from "./pages/categories";
 
 function App() {
 
@@ -37,22 +34,31 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home isOpen={isOpen} toggle={toggle} />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/about"
-          element={<About isOpen={isOpen} toggle={toggle} />}
+          element={<About />}
         />
-        <Route path="/sell" element={<Suggest />} />
-        <Route path="/list-items" element={<Sell />} />
-
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/real-estate" element={<RealEstateCategories/>} />
-        <Route path="/residential" element={<Residential />}/>
-        <Route path="/commercial" element={<Commercial />}/>
-        <Route path="/land" element={<Land />} />
-
         <Route path="/contact" element={<Contact />} />
+
+
+        <Route path="/marketplaces" element={<Marketplaces />} />
+        <Route path="/marketplaces/:id" element={<Marketplaces />} />
+
+        <Route path="/marketplaces/:idMarketplace/categories" element={<Categories />} />
+        <Route path="/marketplaces/:idMarketplace/categories/:idCategory" element={<RealEstateCategories/>} />
+
+
+        {/*<Route path="/sell" element={<Suggest />} />*/}
+        {/*<Route path="/list-items" element={<Sell />} />*/}
+
+
+        {/*<Route path="/residential" element={<Residential />}/>*/}
+        {/*<Route path="/commercial" element={<Commercial />}/>*/}
+        {/*<Route path="/land" element={<Land />} />*/}
+
       </Routes>
       <Footer />
     </div>
