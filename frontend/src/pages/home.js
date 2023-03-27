@@ -4,7 +4,7 @@ import Hero from "../components/Hero";
 const Home = ({ isOpen, toggle}) => {
   return (
     <>
-        <Hero isOpen={isOpen} toggle={toggle} />
+        <Hero  />
         {/*<Content />*/}
     </>
   );
