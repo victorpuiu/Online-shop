@@ -37,9 +37,6 @@ export const Marketplaces = () => {
                         </ul>
                     </div>
 
-                    {/*</div>*/}
-
-
                     {marketPlaces.map(marketPlace => <Marketplace key={marketPlace.name} marketPlace={marketPlace}/>)}
 
 
