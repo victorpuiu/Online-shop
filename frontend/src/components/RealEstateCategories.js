@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import Navbar from "./Navbar";
 import Content from "./Content";
 import axios from "axios";
 
@@ -32,7 +31,7 @@ export const RealEstateCategories = () => {
 
     return (
         <>
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="flex flex-wrap pl-32 pr-32 mt-1 py-8">
                 <div className="flex flex-col space-y-4 w-60">
 
