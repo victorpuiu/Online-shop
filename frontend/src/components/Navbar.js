@@ -26,8 +26,11 @@ const Navbar = () => {
 
     if (selectedMarketName === "All markets") {
       navigate("/");
-    } else{
-      navigate(`/${selectedMarketName}`);
+    } else if (selectedMarketName === "real-estate"){
+      navigate("/marketplaces/1/categories");
+    } else if (selectedMarketName === "Watches"){
+      navigate("/marketplaces/2/categories");
+
     }
   };
 
@@ -76,8 +79,8 @@ const Navbar = () => {
               <Link className="p-4" to="/contact">
                 Contact
               </Link>
-              <Link className="p-4" to="/marketplace">
-                Marketplace
+              <Link className="p-4" to="/marketplaces">
+                Marketplaces
               </Link>
           </li>
         </ul>
