@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Navbar from "./Navbar";
 import beautifulHouse from "../images/beautifulHouse.jpg";
 import {SearchCategories} from "./SearchCategories";
 import axios from "axios";
@@ -63,7 +62,7 @@ const Residential = () => {
     return (
 
         <>
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
                     Residential Real Estate
