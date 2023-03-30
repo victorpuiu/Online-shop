@@ -27,6 +27,9 @@ public class Product {
 
     private double price;
 
+    @ManyToOne
+    private User user;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
