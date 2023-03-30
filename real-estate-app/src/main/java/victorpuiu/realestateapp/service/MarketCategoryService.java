@@ -12,7 +12,7 @@ public interface MarketCategoryService {
     void deleteById(long id);
 
 
-    List<MarketCategoryDto> getCategories();
+    List<MarketCategoryDto> getCategories(long marketId);
 
     MarketCategoryDto saveOrEdit(MarketCategoryDto marketCategoryDto);
 
