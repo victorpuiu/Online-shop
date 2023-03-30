@@ -13,11 +13,11 @@ public enum ProductType {
 //            ("Apartment"),
     ROOM,
 //            ("Room"),
-    LAND,
+//    LAND,
 //            ("Land")
-    COMMERCIAL,
+//    COMMERCIAL,
 //
-    RESIDENTIAL,
+//    RESIDENTIAL,
     HOUSE,
     OFFICE_SPACE,
     WAREHOUSE
