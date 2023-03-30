@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Route, Routes} from "react-router-dom";
 import "./App.css";
 import {Footer} from "./components/Footer";
@@ -6,31 +6,13 @@ import {About} from "./pages/about";
 import Home from "./pages/home";
 import {Marketplaces} from "./pages/marketplaces";
 import {Contact} from "./pages/contact";
-import {RealEstateCategories} from "./components/RealEstateCategories";
 import Navbar from "./components/Navbar";
 import Categories from "./pages/categories";
+import Products from "./pages/products";
+import Product from "./pages/product";
+import Sell from "./pages/sell";
 
 function App() {
-
-   // The effect for the dropdown menu.
-
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-  useEffect(() => {
-    const hideMenu = () => {
-      if (window.innerWidth > 768 && isOpen) {
-        setIsOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", hideMenu);
-
-    return () => {
-      window.removeEventListener("resize", hideMenu);
-    };
-  });
 
   return (
     <div>
@@ -45,13 +27,17 @@ function App() {
 
 
         <Route path="/marketplaces" element={<Marketplaces />} />
-        <Route path="/marketplaces/:id" element={<Marketplaces />} />
+        {/*<Route path="/marketplaces/:idMarketplace" element={<Marketplaces />} />*/}
 
         <Route path="/marketplaces/:idMarketplace/categories" element={<Categories />} />
-        <Route path="/marketplaces/:idMarketplace/categories/:idCategory" element={<RealEstateCategories/>} />
+        {/*<Route path="/marketplaces/:idMarketplace/categories/:idCategory" element={<Categories/>} />*/}
+
+        <Route path="/marketplaces/:idMarketplace/categories/:idCategory/products" element={< Products />} />
+
+        <Route path="/marketplaces/:idMarketplace/categories/:idCategory/products/:idProduct" element={< Product />} />
 
 
-        {/*<Route path="/sell" element={<Suggest />} />*/}
+        <Route path="/sell" element={<Sell />} />
         {/*<Route path="/list-items" element={<Sell />} />*/}
 
 
