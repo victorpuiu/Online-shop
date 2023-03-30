@@ -1,6 +1,7 @@
 package victorpuiu.realestateapp.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import victorpuiu.realestateapp.entity.Market;
 import victorpuiu.realestateapp.entity.Product;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     List<Product> findByPriceBetween(Double min, Double max);
 
-    List<Product> findFirst10ByOrderByIdAsc();
+    List<Product> findAllByMarketCategoryIdAndMarketCategory_Market(long categoryId, Market market);
+
+//    List<Product> findFirst10ByCreatedAtBefore();
 }
