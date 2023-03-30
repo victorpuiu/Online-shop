@@ -15,17 +15,15 @@ import java.util.stream.Collectors;
 @Service
 public class MarketCategoryServiceDefault implements MarketCategoryService{
     private final MarketCategoryRepository marketCategoryRepository;
-    private final MarketRepository marketRepository;
 
     public MarketCategoryServiceDefault(MarketCategoryRepository marketCategoryRepository,
                                         MarketRepository marketRepository) {
         this.marketCategoryRepository = marketCategoryRepository;
-        this.marketRepository = marketRepository;
     }
 
     @Override
-    public List<MarketCategoryDto> getCategories() {
-        List<MarketCategory> marketCategory = marketCategoryRepository.findAll();
+    public List<MarketCategoryDto> getCategories(long marketId) {
+        List<MarketCategory> marketCategory = marketCategoryRepository.findByMarketId(marketId);
         return marketCategory.stream().map(MarketCategoryMapper.INSTANCE::toMarketCategoryDto)
                 .collect(Collectors.toList());
     }
