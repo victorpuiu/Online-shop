@@ -10,6 +10,7 @@ import victorpuiu.realestateapp.dto.MarketDto;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.AdvertisementType;
 import victorpuiu.realestateapp.entity.ProductType;
+import victorpuiu.realestateapp.entity.User;
 import victorpuiu.realestateapp.service.MarketCategoryService;
 import victorpuiu.realestateapp.service.MarketService;
 import victorpuiu.realestateapp.service.ProductService;
@@ -38,13 +39,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         MarketDto realEstateMarket = new MarketDto();
         realEstateMarket.setName("real-estate");
-        realEstateMarket.setImageUrl("https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU");
+        realEstateMarket.setMarketImageUrl("https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU");
 
         realEstateMarket =  marketService.saveOrEdit(realEstateMarket);
 
         MarketDto watchesMarket = new MarketDto();
         watchesMarket.setName("Watches");
-        watchesMarket.setImageUrl("https://unsplash.com/photos/LWPPpkn6NEQ");
+        watchesMarket.setMarketImageUrl("https://images.unsplash.com/photo-1619976396248-56d05beb2919?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80");
 
         watchesMarket = marketService.saveOrEdit(watchesMarket);
 
@@ -78,6 +79,11 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         men = marketCategoryService.saveOrEdit(men);
 
 
+
+
+        User user1 = new User();
+        user1.setPassword("password");
+        user1.setUsername("username");
 
 
 
