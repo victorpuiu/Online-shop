@@ -24,6 +24,8 @@ public class ProductDto {
 
     private AddressDto address;
 
+    private UserDto userDto;
+
     private AdvertisementType advertisementType;
 
     private String image;
