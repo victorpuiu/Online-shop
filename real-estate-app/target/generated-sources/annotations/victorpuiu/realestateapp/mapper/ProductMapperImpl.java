@@ -1,18 +1,18 @@
 package victorpuiu.realestateapp.mapper;
 
 import javax.annotation.processing.Generated;
-import org.springframework.stereotype.Component;
 import victorpuiu.realestateapp.dto.AddressDto;
+import victorpuiu.realestateapp.dto.MarketCategoryDto;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.entity.Address;
+import victorpuiu.realestateapp.entity.MarketCategory;
 import victorpuiu.realestateapp.entity.Product;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-02-23T20:49:32+0200",
+    date = "2023-03-28T02:01:19+0300",
     comments = "version: 1.5.0.Final, compiler: javac, environment: Java 19.0.1 (Oracle Corporation)"
 )
-@Component
 public class ProductMapperImpl implements ProductMapper {
 
     @Override
@@ -23,6 +23,7 @@ public class ProductMapperImpl implements ProductMapper {
 
         ProductDto productDto = new ProductDto();
 
+        productDto.setId( product.getId() );
         productDto.setPropertyType( product.getPropertyType() );
         productDto.setDescription( product.getDescription() );
         productDto.setPrice( product.getPrice() );
@@ -41,6 +42,8 @@ public class ProductMapperImpl implements ProductMapper {
 
         Product product = new Product();
 
+        product.setMarketCategory( marketCategoryDtoToMarketCategory( productDto.getMarketCategoryDto() ) );
+        product.setId( productDto.getId() );
         product.setPropertyType( productDto.getPropertyType() );
         product.setDescription( productDto.getDescription() );
         product.setPrice( productDto.getPrice() );
@@ -65,6 +68,21 @@ public class ProductMapperImpl implements ProductMapper {
         addressDto.setNumber( address.getNumber() );
 
         return addressDto;
+    }
+
+    protected MarketCategory marketCategoryDtoToMarketCategory(MarketCategoryDto marketCategoryDto) {
+        if ( marketCategoryDto == null ) {
+            return null;
+        }
+
+        MarketCategory marketCategory = new MarketCategory();
+
+        marketCategory.setId( marketCategoryDto.getId() );
+        marketCategory.setName( marketCategoryDto.getName() );
+        marketCategory.setImageUrl( marketCategoryDto.getImageUrl() );
+        marketCategory.setRedirectLink( marketCategoryDto.getRedirectLink() );
+
+        return marketCategory;
     }
 
     protected Address addressDtoToAddress(AddressDto addressDto) {
