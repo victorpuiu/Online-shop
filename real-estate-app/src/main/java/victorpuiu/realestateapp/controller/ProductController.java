@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import victorpuiu.realestateapp.dto.MarketCategoryDto;
 import victorpuiu.realestateapp.dto.ProductDto;
 import victorpuiu.realestateapp.service.ProductService;
 import victorpuiu.realestateapp.service.ProductServiceDefault;
@@ -29,6 +30,7 @@ public class ProductController {
     public ResponseEntity<List<ProductDto>> getAllProducts(
             @RequestParam(required = false) final Double min,
             @RequestParam(required = false) final Double max)
+            // 2 path variable to add
     {
 
         // Convert the Property objects to PropertyDto objects
@@ -51,7 +53,8 @@ public class ProductController {
     }
 
     @PostMapping("saveOrEdit")
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto){
+    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto,
+                                                    @PathVariable("marketId") long marketId){
         //validate the input
         if (productDto.getPropertyType() == null || productDto.getPropertyType().toString().isEmpty()){
             throw new IllegalArgumentException("Property cannot be empty");
@@ -64,6 +67,10 @@ public class ProductController {
         }
         // Map the DTO to a domain model
 //        Product product = ProductMapper.INSTANCE.toProduct(productDto);
+
+        MarketCategoryDto marketCategoryDto = new MarketCategoryDto();
+        marketCategoryDto.setMarketId(marketId);
+        productDto.setMarketCategoryDto(marketCategoryDto);
 
         // Save the property to the database
         ProductDto savedProduct = productService.saveOrEdit(productDto);
