@@ -18,7 +18,7 @@ public class Market {
 
     private String name;
 
-    private String imageUrl;
+    private String marketImageUrl;
 
     @OneToMany(mappedBy = "market")
     private List<MarketCategory> marketCategories =  new ArrayList<>();
