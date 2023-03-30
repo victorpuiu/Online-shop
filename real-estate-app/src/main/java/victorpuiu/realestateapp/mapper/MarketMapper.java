@@ -9,7 +9,11 @@ import victorpuiu.realestateapp.entity.Market;
 public interface MarketMapper {
     MarketMapper INSTANCE = Mappers.getMapper(MarketMapper.class);
 
+
+
     MarketDto toMarketDto(Market market);
+
+
 
     Market toMarket(MarketDto marketDto);
 
