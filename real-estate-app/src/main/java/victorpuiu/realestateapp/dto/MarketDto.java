@@ -12,6 +12,9 @@ public class MarketDto {
 
     private String name;
 
+    private String marketImageUrl;
+
+
 //    private List<MarketCategoryDto> marketCategories =  new ArrayList<>();
 
 }
