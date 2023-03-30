@@ -7,23 +7,8 @@ import axios from "axios";
 
 const Content = () => {
 
-  // const listings = props.products;
 
   const [imageIndex, setImageIndex] = useState(0);
-
-  // const [listings, setListings] = useState([]);
-  // useEffect(() => {
-  //   loadListings();
-  // }, []);
-  //
-  // const loadListings = async () => {
-  //   try {
-  //     const result = await axios.get("markets/{marketId}/categories/{categoryId}/products");
-  //     setListings(result.data);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
 
 
   const [marketId, setMarketId] = useState();
@@ -107,7 +92,7 @@ const Content = () => {
                       <div
                           key={index}
                           className={
-                            index === imageIndex ? "slide active-slide" : "slide"
+                          index === imageIndex ? "slide active-slide" : "slide"
                           }
                       >
                         <img src={listing.image} alt={listing.title} />
