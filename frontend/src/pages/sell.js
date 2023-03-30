@@ -1,11 +1,21 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+// import axios, {get} from "axios";
 import {Link} from "react-router-dom";
 import logoImage from "../images/logo.png";
+import axios from "axios";
 
 const Sell = () => {
 
-    const [propertyType, setPropertyType] = useState(0);
+    // const [marketType, setMarketType] = useState("");
+    const [markets, setMarkets] = useState([]);
+
+    const [categories, setCategories] = useState([]);
+
+    const [propertyType, setPropertyType] = useState(0); //house, ap.
+
+    const [marketId, setMarketId] = useState();
+    const [categoryId, setCategoryId] = useState();
+
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [country, setCountry] = useState("");
@@ -13,62 +23,53 @@ const Sell = () => {
     const [street, setStreet] = useState("");
     const [zipcode, setZipcode] = useState("");
     const [number, setNumber] = useState("");
+
     const [advertisementType, setAdvertisementType] = useState("");
 
-
-    const [marketId, setMarketId] = useState();
-    const [categoryId, setCategoryId] = useState();
 
     const [images, setImages] = useState([]);
     // const [videos, setVideos] = useState([]);
 
+    const loadMarketsAndMarketId = async () => {
+        const response = await axios.get("http://localhost:8080/markets");
+        if (response.data) {
+            setMarkets(response.data);
+            // response.data.forEach(market =>
+            //         market.name === ("real-estate") ? setMarketId(marketType) : ""
+            //
+            // );
 
-
-    const loadMarketId = async () => {
-        const result = await axios.get("http://localhost:8080/markets");
-        if (result.data) {
-            result.data.forEach(market => market.name === "real-estate" ? setMarketId(market.id) : "");
         }
     }
-    const loadCategoryId = async () => {
-        const result = await axios.get("http://localhost:8080/markets/" + marketId + "/categories");
-        if (result.data) {
-            result.data.forEach(category => category.name === ("Residential" || "Commercial" || "Land")
-              ? setCategoryId(category.id) : "");
+    const loadCategoriesAndCategoryId = async () => {
+        const response = await axios.get("http://localhost:8080/markets/" + marketId + "/categories");
+        // console.log(response.data);
+        if (response.data) {
+            setCategories(response.data);
+            // response.data.forEach(category => category.name === ("Residential" || "Commercial" || "Land")
+            //   ? setCategoryId(category.id) : "");
       }
     }
-
-
 
     const handleImageUpload = (e) => {
         setImages([...images, e.target.files[0]]);
     };
 
-    // const handleVideoUpload = (e) => {
-    //     setVideos([...videos, e.target.files[0]]);
-    // };
-
-
-
     useEffect(() => {
-        loadMarketId()
+        loadMarketsAndMarketId();
     }, []);
 
-
     useEffect(() => {
-        loadCategoryId()
-    }, []);
-
-
-    console.log(propertyType);
-    console.log(description);
-    console.log(price);
+        loadCategoriesAndCategoryId();
+    }, [marketId]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const productDto = {
-            propertyType,
+            //market
+            marketCategoryDto: categoryId, // residential, commercial, land
+            propertyType, //house, apartment
             description,
             price,
             address: {
@@ -79,24 +80,20 @@ const Sell = () => {
                 number
             },
             advertisementType,
-            image: images[0], // only using the first image for simplicity
-            marketCategoryDto: null // not sure what this is, leaving it out for now
+            image: images[0], // using the first image for simplicity
+
         };
         try {
             await axios.post("http://localhost:8080/markets/" + marketId + "/categories/"
-                + categoryId + "/products/saveOrEdit/", productDto);
+                + categoryId + "/products/saveOrEdit", productDto);
             alert("Your listing has been created!");
         } catch (error) {
             console.log(error);
         }
     };
 
-    console.log(propertyType);
-    console.log(price);
-    console.log(description)
-    console.log(advertisementType);
-    // console.log(image);
-
+    // console.log(categories);
+    // console.log(propertyType);
 
     return (
         <div className=" ml-80 mr-80 my-8">
@@ -116,28 +113,102 @@ const Sell = () => {
 
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
+                    <label className="block font-bold mb-2" htmlFor="productType">
+                        Select a market type
+                    </label>
+                    <select
+                        className="w-full border border-gray-400 p-2"
+                        id="marketId"
+                        value={marketId}
+                        onChange={(e) => {
+                            // setMarketType(e.target.value);
+                            setMarketId(e.target.value)
+                            setCategoryId("");
+
+                        }
+                    }
+                    >
+                        <option value="">Select a market type</option>
+                        {markets.map(market => (
+                            <option value={market.id} key={market.name}>{market.name}</option>
+
+                        ))}
+                    </select>
+                </div>
+
+                {marketId && <div className="mb-4">
                     <label className="block font-bold mb-2" htmlFor="propertyType">
-                        Property Type
+                        Market Category
                     </label>
                     <select
                         className="w-full border border-gray-400 bg-gray-100 p-2"
-                        id="propertyType"
-                        value={propertyType}
-                        onChange={(e) => setPropertyType(e.target.value)}
+                        // id="categoryType"
+                        // value={categoryType}
+                        // onChange={(e) => setCategoryType(e.target.value)}
+
+                        id="categoryId"
+                        value={categoryId}
+                        onChange={(e) => {
+                            setCategoryId(e.target.value);
+
+                        }}
 
                     >
-                        <option value="">Select a property type</option>
-                        {/*<option value="house">House</option>*/}
-                        {/*<option value="residential">Residential</option>*/}
-                        {/*<option value="commercial">Commercial</option>*/}
-                        {/*<option value="land">Land</option>*/}
-                        <option value={7}>Residential</option>
-                        <option value={6}>Commercial</option>
-                        <option value={5}>Land</option>
+                        <option value="">Select a market category</option>
 
+                        {categories.map(category => (
+                            <option value={category.id} key={category.name}>{category.name}</option>
+
+                        ))}
 
                     </select>
-                </div>
+                </div>}
+
+                {categoryId && (
+                    <div className="mb-4">
+                        <label className="block font-bold mb-2" htmlFor="propertyType">
+                            Property type
+                        </label>
+                        <select
+                            className="w-full border border-gray-400 bg-gray-100 p-2"
+                            id="propertyType"
+                            value={propertyType}
+                            onChange={(e) => {
+                                setPropertyType(e.target.value);
+                            }}
+                        >
+                            <option value="">Select a property type</option>
+                            {categories.map(category => (
+                                category.id === parseInt(categoryId) && (
+                                    <>
+                                        {category.name === 'Residential' && (
+                                            <>
+                                                <option value={category.id} key={category.id}>House</option>
+                                                <option value={category.id} key={category.name}>Apartment</option>
+                                            </>
+                                        )}
+                                        {category.name === 'Commercial' && (
+                                            <>
+                                                <option value={category.id} key={category.id}>Office Space</option>
+                                                <option value={category.id} key={category.name}>Warehouse</option>
+                                            </>
+                                        )}
+                                        {category.name === 'Land' && (
+                                            <>
+                                                <option value={category.id} key={category.id}>Urban Area</option>
+                                                <option value={category.id} key={category.name}>Farm</option>
+                                            </>
+                                        )}
+                                    </>
+                                )
+                            ))}
+                        </select>
+                    </div>
+                )}
+
+
+
+
                 <div className="mb-4">
                     <label className="block font-bold mb-2" htmlFor="description">
                         Description
@@ -253,9 +324,28 @@ const Sell = () => {
                 >
                     Submit
                 </button>
+
             </form>
         </div>
     );
 };
 
 export default Sell;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
