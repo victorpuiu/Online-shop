@@ -3,7 +3,9 @@ package victorpuiu.realestateapp.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import victorpuiu.realestateapp.dto.UserDeleteRequest;
 import victorpuiu.realestateapp.dto.UserDto;
+import victorpuiu.realestateapp.dto.UserRegistrationRequest;
 import victorpuiu.realestateapp.dto.UserUpdateRequest;
 import victorpuiu.realestateapp.service.UserService;
 
@@ -31,7 +33,35 @@ public class UserController {
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
 
+    @PostMapping
+    public ResponseEntity<UserDto> createUser(@RequestBody UserRegistrationRequest request) {
+        UserDto createdUser = userService.createUser(request);
+        return new ResponseEntity<>(createdUser, HttpStatus.OK);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<UserDto> deleteUser(@PathVariable long id, @RequestBody UserDeleteRequest request) {
+        request.setId(id);
+        userService.deleteUser(request);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
