@@ -24,7 +24,7 @@ public class ProductDto {
 
     private AddressDto address;
 
-    private UserDto userDto;
+    private UserDto user;
 
     private AdvertisementType advertisementType;
 
