@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
-// import axios, {get} from "axios";
+
 import {Link} from "react-router-dom";
 import logoImage from "../images/logo.png";
 import axios from "axios";
+import Long from "long";
+
 
 const Sell = () => {
 
@@ -68,7 +70,7 @@ const Sell = () => {
         e.preventDefault();
         const productDto = {
             //market
-            marketCategoryDto: categoryId, // residential, commercial, land
+            marketCategoryDto: Long.fromString(categoryId),             // residential, commercial, land
             propertyType, //house, apartment
             description,
             price,
@@ -92,8 +94,10 @@ const Sell = () => {
         }
     };
 
+    // console.log(markets);
     // console.log(categories);
     // console.log(propertyType);
+    // console.log(categoryId);
 
     return (
         <div className=" ml-80 mr-80 my-8">
@@ -123,14 +127,14 @@ const Sell = () => {
                         onChange={(e) => {
                             // setMarketType(e.target.value);
                             setMarketId(e.target.value)
-                            setCategoryId("");
+                            // setCategoryId("");
 
                         }
                     }
                     >
                         <option value="">Select a market type</option>
                         {markets.map(market => (
-                            <option value={market.id} key={market.name}>{market.name}</option>
+                            <option value={market.id} key={market.id}>{market.name}</option>
 
                         ))}
                     </select>
@@ -157,7 +161,7 @@ const Sell = () => {
                         <option value="">Select a market category</option>
 
                         {categories.map(category => (
-                            <option value={category.id} key={category.name}>{category.name}</option>
+                            <option value={category.id} key={category.id}>{category.name}</option>
 
                         ))}
 
