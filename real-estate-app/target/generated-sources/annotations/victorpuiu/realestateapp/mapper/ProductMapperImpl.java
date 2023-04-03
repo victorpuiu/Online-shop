@@ -4,13 +4,15 @@ import javax.annotation.processing.Generated;
 import victorpuiu.realestateapp.dto.AddressDto;
 import victorpuiu.realestateapp.dto.MarketCategoryDto;
 import victorpuiu.realestateapp.dto.ProductDto;
+import victorpuiu.realestateapp.dto.UserDto;
 import victorpuiu.realestateapp.entity.Address;
 import victorpuiu.realestateapp.entity.MarketCategory;
 import victorpuiu.realestateapp.entity.Product;
+import victorpuiu.realestateapp.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-31T13:07:00+0300",
+    date = "2023-04-02T21:34:17+0300",
     comments = "version: 1.5.0.Final, compiler: javac, environment: Java 19.0.1 (Oracle Corporation)"
 )
 public class ProductMapperImpl implements ProductMapper {
@@ -28,6 +30,7 @@ public class ProductMapperImpl implements ProductMapper {
         productDto.setDescription( product.getDescription() );
         productDto.setPrice( product.getPrice() );
         productDto.setAddress( addressToAddressDto( product.getAddress() ) );
+        productDto.setUser( userToUserDto( product.getUser() ) );
         productDto.setAdvertisementType( product.getAdvertisementType() );
         productDto.setImage( product.getImage() );
 
@@ -47,6 +50,7 @@ public class ProductMapperImpl implements ProductMapper {
         product.setPropertyType( productDto.getPropertyType() );
         product.setDescription( productDto.getDescription() );
         product.setPrice( productDto.getPrice() );
+        product.setUser( userDtoToUser( productDto.getUser() ) );
         product.setAddress( addressDtoToAddress( productDto.getAddress() ) );
         product.setAdvertisementType( productDto.getAdvertisementType() );
         product.setImage( productDto.getImage() );
@@ -70,6 +74,20 @@ public class ProductMapperImpl implements ProductMapper {
         return addressDto;
     }
 
+    protected UserDto userToUserDto(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserDto userDto = new UserDto();
+
+        userDto.setId( user.getId() );
+        userDto.setUsername( user.getUsername() );
+        userDto.setEmail( user.getEmail() );
+
+        return userDto;
+    }
+
     protected MarketCategory marketCategoryDtoToMarketCategory(MarketCategoryDto marketCategoryDto) {
         if ( marketCategoryDto == null ) {
             return null;
@@ -83,6 +101,20 @@ public class ProductMapperImpl implements ProductMapper {
         marketCategory.setRedirectLink( marketCategoryDto.getRedirectLink() );
 
         return marketCategory;
+    }
+
+    protected User userDtoToUser(UserDto userDto) {
+        if ( userDto == null ) {
+            return null;
+        }
+
+        User user = new User();
+
+        user.setId( userDto.getId() );
+        user.setUsername( userDto.getUsername() );
+        user.setEmail( userDto.getEmail() );
+
+        return user;
     }
 
     protected Address addressDtoToAddress(AddressDto addressDto) {
