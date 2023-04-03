@@ -24,7 +24,7 @@ public class LoginServiceDefault implements LoginService {
     @Override
     public UserDto login(LoginRequest loginRequest) {
 
-        Optional<User> optionalUser = userRepository.findByUsername(loginRequest.getEmail());
+        Optional<User> optionalUser = userRepository.findByEmail(loginRequest.getEmail());
         User user = optionalUser.orElseThrow(() -> new IllegalStateException("No user found"));
 
 //        String hashedPassword = hashPassword(loginRequest.getPassword());
