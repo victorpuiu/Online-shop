@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import Background from "../images/hero-background.jpg";
-import antique from "../images/antique.jpg"
-import realEstate from "../images/realEstate.jpeg"
-import watches from "../images/watche.jpg"
+import Background from "../hero-background.jpg";
+import antique from "../antique.jpg"
+import realEstate from "../realEstate.jpeg"
+import watches from "../watche.jpg"
 
 const Hero = () => {
 
