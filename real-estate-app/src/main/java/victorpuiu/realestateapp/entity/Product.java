@@ -2,7 +2,6 @@ package victorpuiu.realestateapp.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,12 +9,10 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Timestamp;
 
-@Data
 @Entity(name = "product")
 @Getter
 @Setter
 public class Product {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
