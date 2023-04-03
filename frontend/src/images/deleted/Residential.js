@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import beautifulHouse from "../images/beautifulHouse.jpg";
-import {SearchCategories} from "./SearchCategories";
+import beautifulHouse from "../beautifulHouse.jpg";
+import {SearchCategories} from "../../components/SearchCategories";
 import axios from "axios";
 import ProductsResidential from "./ProductsResidential";
 
