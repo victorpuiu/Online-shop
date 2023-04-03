@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../components/Hero";
+import Hero from "../images/deleted/Hero";
 
 const Home = ({ isOpen, toggle}) => {
   return (
