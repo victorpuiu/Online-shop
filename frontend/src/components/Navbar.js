@@ -17,9 +17,9 @@ const Navbar = () => {
     const selectedMarketName = event.target.value;
     const selectedMarket = markets.find((market) => market.name === selectedMarketName);
 
-    console.log(markets);
-    console.log(selectedMarketName);
-    console.log(selectedMarket);
+    // console.log(markets);
+    // console.log(selectedMarketName);
+    // console.log(selectedMarket);
 
     // setMarkets(selectedMarketName);
     setSelectedMarket(selectedMarketName);
@@ -57,12 +57,12 @@ const Navbar = () => {
       >
         <span>
           Hi!
-          <Link to="/sign-in" className="text-blue-700 font-sans">
+          <Link to="/login" className="text-blue-700 font-sans">
             Sign in
           </Link>
           <span className="text-black font-sans">
             {" or "}
-            <Link to="/register" className="text-blue-700 font-sans">
+            <Link to="/login" className="text-blue-700 font-sans">
               register
             </Link>
           </span>
