@@ -10,7 +10,7 @@ import victorpuiu.realestateapp.dto.UserUpdateRequest;
 import victorpuiu.realestateapp.service.UserService;
 
 @RestController
-@RequestMapping()
+@RequestMapping("user")
 public class UserController {
 
     private final UserService userService;
@@ -20,26 +20,26 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable long id) {
         UserDto user = userService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<UserDto> updateUser(@PathVariable long id, @RequestBody UserUpdateRequest request) {
         request.setId(id);
         UserDto updateUser = userService.updateUser(request);
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("newUser")
     public ResponseEntity<UserDto> createUser(@RequestBody UserRegistrationRequest request) {
         UserDto createdUser = userService.createUser(request);
         return new ResponseEntity<>(createdUser, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<UserDto> deleteUser(@PathVariable long id, @RequestBody UserDeleteRequest request) {
         request.setId(id);
         userService.deleteUser(request);
