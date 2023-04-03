@@ -81,6 +81,14 @@ const Product = () => {
                     </div>
                 </div>
 
+                <div className="mb-4">
+                    <h2 className="text-lg font-semi-bold text-gray-700">Contact</h2>
+                    <p className="text-gray-600">
+                        {product.user.username}: {product.user.email}
+                    </p>
+                </div>
+
+
             </div>
         </div>
     );
