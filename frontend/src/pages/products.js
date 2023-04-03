@@ -24,17 +24,125 @@ const Products = () => {
     }, [idMarketplace, idCategory]);
 
 
-        console.log(products);
+    console.log(products);
 
     return (
 
         <>
+            <div className=" mx-auto w-full md:w-2/3 shadow p-5 rounded-lg bg-white">
+                <div className="relative">
+                    {/*<div className="absolute flex items-center ml-2 h-full">*/}
+                    {/*    <svg className="w-4 h-4 fill-current text-primary-gray-dark" viewBox="0 0 16 16" fill="none"*/}
+                    {/*         xmlns="http://www.w3.org/2000/svg">*/}
+                    {/*        <path*/}
+                    {/*            d="M15.8898 15.0493L11.8588 11.0182C11.7869 10.9463 11.6932 10.9088 11.5932 10.9088H11.2713C12.3431 9.74952 12.9994 8.20272 12.9994 6.49968C12.9994 2.90923 10.0901 0 6.49968 0C2.90923 0 0 2.90923 0 6.49968C0 10.0901 2.90923 12.9994 6.49968 12.9994C8.20272 12.9994 9.74952 12.3431 10.9088 11.2744V11.5932C10.9088 11.6932 10.9495 11.7869 11.0182 11.8588L15.0493 15.8898C15.1961 16.0367 15.4336 16.0367 15.5805 15.8898L15.8898 15.5805C16.0367 15.4336 16.0367 15.1961 15.8898 15.0493ZM6.49968 11.9994C3.45921 11.9994 0.999951 9.54016 0.999951 6.49968C0.999951 3.45921 3.45921 0.999951 6.49968 0.999951C9.54016 0.999951 11.9994 3.45921 11.9994 6.49968C11.9994 9.54016 9.54016 11.9994 6.49968 11.9994Z"></path>*/}
+                    {/*    </svg>*/}
+                    {/*</div>*/}
+                    {/*<input type="text" placeholder="Search by listing, location, bedroom number..."*/}
+                    {/*       className="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">*/}
+                    {/*</input>*/}
+                </div>
+
+                <div className="flex items-center justify-between mt-4">
+                    <p className="font-medium">
+                        Filters
+                    </p>
+
+                    <button
+                        className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+                        Reset Filter
+                    </button>
+                </div>
+                <div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+                        <select
+                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                            <option value="">State/Province</option>
+                            <option value="bucharest">Bucharest</option>
+                            <option value="cluj">Cluj</option>
+                        </select>
+                        <select
+                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                            <option value="">All Type</option>
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                        </select>
+
+                        <select
+                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                            <option value="">Advertisement Type</option>
+                            <option value="for-rent">For Rent</option>
+                            <option value="for-sale">For Sale</option>
+                        </select>
+
+                        {/*<select*/}
+                        {/*    className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">*/}
+                        {/*    <option value="">Furnish Type</option>*/}
+                        {/*    <option value="fully-furnished">Fully Furnished</option>*/}
+                        {/*    <option value="partially-furnished">Partially Furnished</option>*/}
+                        {/*    <option value="not-furnished">Not Furnished</option>*/}
+                        {/*</select>*/}
+
+                        <select
+                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                            <option value="">Any Price</option>
+                            <option value="1000">RM 1000</option>
+                            <option value="2000">RM 2000</option>
+                            <option value="3000">RM 3000</option>
+                            <option value="4000">RM 4000</option>
+                        </select>
+
+
+                        {/*<select*/}
+                        {/*    className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">*/}
+                        {/*    <option value="">Floor Area</option>*/}
+                        {/*    <option value="200">200 sq.ft</option>*/}
+                        {/*    <option value="400">400 sq.ft</option>*/}
+                        {/*    <option value="600">600 sq.ft</option>*/}
+                        {/*    <option value="800 sq.ft">800</option>*/}
+                        {/*    <option value="1000 sq.ft">1000</option>*/}
+                        {/*    <option value="1200 sq.ft">1200</option>*/}
+                        {/*</select>*/}
+
+                        <select
+                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                            <option value="">Bedrooms</option>
+                            <option value="1">1 bedroom</option>
+                            <option value="2">2 bedrooms</option>
+                            <option value="3">3 bedrooms</option>
+                            <option value="4">4 bedrooms</option>
+                            <option value="5">5 bedrooms</option>
+                        </select>
+
+                        {/*<select*/}
+                        {/*    className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">*/}
+                        {/*    <option value="">Bathrooms</option>*/}
+                        {/*    <option value="1">1 bathroom</option>*/}
+                        {/*    <option value="2">2 bathrooms</option>*/}
+                        {/*    <option value="3">3 bathrooms</option>*/}
+                        {/*    <option value="4">4 bathrooms</option>*/}
+                        {/*    <option value="5">5 bathrooms</option>*/}
+                        {/*</select>*/}
+
+                        {/*<select*/}
+                        {/*    className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">*/}
+                        {/*    <option value="">Bathrooms</option>*/}
+                        {/*    <option value="1">1 space</option>*/}
+                        {/*    <option value="2">2 space</option>*/}
+                        {/*    <option value="3">3 space</option>*/}
+                        {/*</select>*/}
+                    </div>
+                </div>
+
+            </div>
+
             <div className="bg-gray-100 py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-2xl font-bold mb-4">Properties</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {products.map(product => (
-                            <Link to={`/marketplaces/${idMarketplace}/categories/${idCategory}/products/${product.id}`} key={product.id}>
+                            <Link to={`/marketplaces/${idMarketplace}/categories/${idCategory}/products/${product.id}`}
+                                  key={product.id}>
                                 <div
                                     key={product.id}
                                     className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -53,13 +161,13 @@ const Products = () => {
                             </Link>
                         ))}
                     </div>
-                    </div>
+                </div>
 
 
             </div>
 
 
-            </>
+        </>
 
     );
 
@@ -69,129 +177,22 @@ export default Products;
 
 
 
-//Link: https://fancytailwind.com/app/fancy-laboratory/molecules/categoryfilters/categoryFilter4
-// import React, { useState } from 'react'
-// import { Switch } from '@headlessui/react'
-// import { ViewGridIcon, ViewListIcon } from "@heroicons/react/solid"
-//
-//
-// const CategoryFilter4 = () => {
-//
-//     const filters = [
-//         {
-//             id: 'brand',
-//             name: 'Brand',
-//             options: [
-//                 { value: 'buliclo', label: 'Buliclo' },
-//                 { value: 'carlotin', label: 'Carlotin' },
-//                 { value: 'merguinez', label: 'Merguinez' },
-//                 { value: 'swifty', label: 'Swifty' },
-//                 { value: 'tamtam', label: 'TamTam' },
-//                 { value: 'wakaflaca', label: 'WakaFlaca' },
-//                 { value: 'zaram', label: 'Zaram' },
-//                 { value: 'zebulus', label: 'Zebulus' },
-//             ],
-//         },
-//         {
-//             id: 'color',
-//             name: 'Color',
-//             options: [
-//                 { value: 'black', label: 'Black' },
-//                 { value: 'white', label: 'Yellow' },
-//                 { value: 'blue', label: 'Blue' },
-//                 { value: 'brown', label: 'Purple' },
-//                 { value: 'green', label: 'Green' },
-//                 { value: 'purple', label: 'Red' },
-//             ],
-//         },
-//         {
-//             id: 'size',
-//             name: 'Size',
-//             options: [
-//                 { value: 'xs', label: 'XS' },
-//                 { value: 'sm', label: 'SM' },
-//                 { value: 'm', label: 'M' },
-//                 { value: 'l', label: 'L' },
-//                 { value: 'xl', label: 'XL' },
-//                 { value: 'xxl', label: 'XXL' },
-//             ],
-//         },
-//     ]
-//
-//     const [gridView, setGridView] = useState(false)
-//     const [menCategory, setMenCategory] = useState(false)
-//
-//
-//     return (
-//         <div className="mx-auto py-8 px-4 w-full max-w-7xl bg-white">
-//             <div className="relative">
-//
-//                 {/* :HEAD TITLE */}
-//                 <div className="pb-10 sm:py-10 flex flex-col items-center border-b-2 border-gray-200 text-center">
-//                     {/* ::Title */}
-//                     <h1 className="text-3xl sm:text-4xl text-gray-700 font-extrabold">New Arrivals</h1>
-//                     {/* ::Text */}
-//                     <p className="mt-5 max-w-xl text-base text-gray-500 font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore illo natus doloremque necessitatibus obcaecati harum dolorem?</p>
-//                 </div>
-//
-//
-//                 {/* :FILTERS CONTAINER */}
-//                 <div className="py-5 sm:px-4 flex flex-col-reverse md:flex-row items-center justify-between">
-//                     {/* ::Filter Select Input */}
-//                     <div className="flex-shrink-0 mt-5 md:mt-0 max-w-sm sm:max-w-none w-full md:w-auto grid sm:grid-flow-col grid-cols-1 sm:auto-cols-fr gap-4">
-//                         {filters.map(filter => (
-//                             <div key={filter.id} className="col-span-1">
-//                                 <label htmlFor={filter.id} className="sr-only">{filter.name}</label>
-//                                 <select name={filter.id} id={filter.id} defaultValue={filter.name} className="form-select w-full rounded border border-gray-300 bg-gray-100 text-base text-gray-600 focus:border-rose-500 focus:ring-rose-500">
-//                                     <option value="" className="font-semibold">{filter.name}</option>
-//                                     {filter.options.map(option => (
-//                                         <option value={option.value}>{option.label}</option>
-//                                     ))
-//                                     }
-//                                 </select>
-//                             </div>
-//                         ))
-//                         }
-//                     </div>
-//                     <div className="flex-grow ml-5 w-full flex items-center justify-around md:justify-between space-x-4">
-//                         {/* ::View Grid */}
-//                         <span className="inline-flex">
-//               {/* :::grid view button */}
-//                             <button className={`inline-flex justify-center items-center ${gridView ? "text-rose-500" : "text-gray-400 hover:text-gray-600"}`} onClick={() => setGridView(true)}>
-//                 <ViewGridIcon className="w-8 h-8" />
-//               </button>
-//                             {/* ::list view button*/}
-//                             <button className={`ml-2 inline-flex justify-center items-center ${!gridView ? "text-rose-500" : "text-gray-400 hover:text-gray-600"}`} onClick={() => setGridView(false)}>
-//                 <ViewListIcon className="w-8 h-8" />
-//               </button>
-//             </span>
-//                         {/* ::Switch Women/Men */}
-//                         <div className="flex items-center space-x-2">
-//                             <span className="text-sm text-gray-500 font-medium">Women</span>
-//                             <Switch
-//                                 checked={menCategory}
-//                                 onChange={setMenCategory}
-//                                 className={`${
-//                                     menCategory ? 'bg-rose-600' : 'bg-gray-200'
-//                                 } relative inline-flex items-center w-14 h-7 rounded-full transition-all duration-200 ease-in-out`}
-//                             >
-//                                 <span className="sr-only">Switch to men category</span>
-//                                 <span
-//                                     className={`${
-//                                         menCategory ? 'translate-x-8 bg-white' : 'translate-x-1 bg-rose-500'
-//                                     } inline-block w-5 h-5 rounded-full transition-all duration-200 ease-in-out transform`}
-//                                 />
-//                             </Switch>
-//                             <span className="text-sm text-gray-500 font-medium">Men</span>
-//                         </div>
-//                     </div>
-//                 </div>
-//
-//             </div>
-//         </div>
-//     )
-// }
-//
-// export default CategoryFilter4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
