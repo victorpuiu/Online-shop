@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Navbar from "./Navbar";
-import commercial from "../images/commercial.jpg";
-import {SearchCategories} from "./SearchCategories";
+import Navbar from "../../components/Navbar";
+import commercial from "../commercial.jpg";
+import {SearchCategories} from "../../components/SearchCategories";
 
 const Commercial = () => {
 
