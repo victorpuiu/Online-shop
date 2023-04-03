@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import Navbar from "./Navbar";
-import land from "../images/land.jpg";
-import {SearchCategories} from "./SearchCategories";
+import Navbar from "../../components/Navbar";
+import land from "../land.jpg";
+import {SearchCategories} from "../../components/SearchCategories";
 
 const Land = () => {
 
