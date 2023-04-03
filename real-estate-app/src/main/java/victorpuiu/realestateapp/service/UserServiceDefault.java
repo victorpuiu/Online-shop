@@ -41,6 +41,7 @@ public class UserServiceDefault implements UserService{
         }
 
         user.setUsername(request.getUserName());
+        user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         userRepository.save(user);
 
@@ -49,12 +50,13 @@ public class UserServiceDefault implements UserService{
 
     @Override
     public UserDto createUser(UserRegistrationRequest request) {
-        Optional<User> existingUser = userRepository.findByUsername(request.getUserName());
+        Optional<User> existingUser = userRepository.findByUsername(request.getUsername());
         if (existingUser.isPresent()) {
-            throw new UserAlreadyExistsException("Username already exists: " + request.getUserName());
+            throw new UserAlreadyExistsException("Username already exists: " + request.getUsername());
         }
         User user = new User();
-        user.setUsername(request.getUserName());
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         userRepository.save(user);
 
