@@ -11,6 +11,7 @@ import Categories from "./pages/categories";
 import Products from "./pages/products";
 import Product from "./pages/product";
 import Sell from "./pages/sell";
+import Login from "./pages/login";
 
 function App() {
 
@@ -44,6 +45,8 @@ function App() {
         {/*<Route path="/residential" element={<Residential />}/>*/}
         {/*<Route path="/commercial" element={<Commercial />}/>*/}
         {/*<Route path="/land" element={<Land />} />*/}
+
+          <Route path="/login" element={<Login />} />
 
       </Routes>
       <Footer />
