@@ -4,17 +4,14 @@ package victorpuiu.realestateapp.bootstrap;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-import victorpuiu.realestateapp.dto.AddressDto;
-import victorpuiu.realestateapp.dto.MarketCategoryDto;
-import victorpuiu.realestateapp.dto.MarketDto;
-import victorpuiu.realestateapp.dto.ProductDto;
+import victorpuiu.realestateapp.dto.*;
 import victorpuiu.realestateapp.entity.AdvertisementType;
 import victorpuiu.realestateapp.entity.ProductType;
-import victorpuiu.realestateapp.entity.User;
+import victorpuiu.realestateapp.repository.UserRepository;
 import victorpuiu.realestateapp.service.MarketCategoryService;
 import victorpuiu.realestateapp.service.MarketService;
 import victorpuiu.realestateapp.service.ProductService;
-
+import victorpuiu.realestateapp.service.UserService;
 
 
 @Component
@@ -25,13 +22,21 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private final MarketCategoryService marketCategoryService;
     private final ProductService productService;
 
+    private final UserService userService;
+    private final UserRepository userRepository;
+
+
     public DevBootstrap(
             MarketService marketService,
             MarketCategoryService marketCategoryService,
-            ProductService productService) {
+            ProductService productService,
+            UserService userService,
+            UserRepository userRepository) {
         this.marketService = marketService;
         this.marketCategoryService = marketCategoryService;
         this.productService = productService;
+        this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -79,12 +84,18 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         men = marketCategoryService.saveOrEdit(men);
 
 
+//        User user1 = new User();
+//        user1.setUsername("dan");
+//        user1.setPassword("1234");
+//        user1.setEmail("joe@black.com");
+//        userRepository.save(user1);
 
-
-        User user1 = new User();
-        user1.setPassword("password");
-        user1.setUsername("username");
-
+        UserDto user = new UserDto();
+        UserRegistrationRequest user1 = new UserRegistrationRequest();
+        user1.setUsername("dan");
+        user1.setPassword("1234");
+        user1.setEmail("joe@black.com");
+        user = userService.createUser(user1);
 
 
         ProductDto house1 = new ProductDto();
@@ -99,6 +110,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house1.setAddress(address1);
         house1.setAdvertisementType(AdvertisementType.SALE);
         house1.setImage("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+        house1.setUser(user); //???
         house1 = productService.saveOrEdit(house1);
 
 
@@ -114,6 +126,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house2.setAddress(address2);
         house2.setAdvertisementType(AdvertisementType.SALE);
         house2.setImage("https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGx1eGVyeSUyMGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+        house2.setUser(user);
         house2 = productService.saveOrEdit(house2);
 
         ProductDto house3 = new ProductDto();
@@ -128,6 +141,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house3.setAddress(address3);
         house3.setAdvertisementType(AdvertisementType.SALE);
         house3.setImage("https://images.unsplash.com/photo-1549517045-bc93de075e53?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+        house3.setUser(user);
         house3 = productService.saveOrEdit(house3);
 
         ProductDto house4 = new ProductDto();
@@ -142,6 +156,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house4.setAddress(address4);
         house4.setAdvertisementType(AdvertisementType.SALE);
         house4.setImage("https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+        house4.setUser(user);
         house4 = productService.saveOrEdit(house4);
 
         ProductDto house5 = new ProductDto();
@@ -156,6 +171,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house5.setAddress(address5);
         house5.setAdvertisementType(AdvertisementType.SALE);
         house5.setImage("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
+        house5.setUser(user);
         house5 = productService.saveOrEdit(house5);
 
 
