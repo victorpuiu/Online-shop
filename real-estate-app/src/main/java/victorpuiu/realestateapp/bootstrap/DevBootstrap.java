@@ -120,7 +120,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house2.setPrice(550000);
         house2.setMarketCategoryDto(residential);// ???????
         AddressDto address2 = new AddressDto();
-        address2.setCity("DC");
+        address2.setCity("Florida");
         address2.setStreet("Two Avenue");
         address2.setZipcode("5001");
         house2.setAddress(address2);
@@ -135,7 +135,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house3.setPrice(575000);
         house3.setMarketCategoryDto(residential);// ???????
         AddressDto address3 = new AddressDto();
-        address3.setCity("NY");
+        address3.setCity("Kansas");
         address3.setStreet("Three Avenue");
         address3.setZipcode("4637");
         house3.setAddress(address3);
@@ -150,7 +150,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house4.setPrice(1000000);
         house4.setMarketCategoryDto(residential);// ???????
         AddressDto address4 = new AddressDto();
-        address4.setCity("CH");
+        address4.setCity("Nevada");
         address4.setStreet("For Avenue");
         address4.setZipcode("7684");
         house4.setAddress(address4);
@@ -165,7 +165,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         house5.setPrice(700000);
         house5.setMarketCategoryDto(residential);// ???????
         AddressDto address5 = new AddressDto();
-        address5.setCity("MI");
+        address5.setCity("Texas");
         address5.setStreet("Five Avenue");
         address5.setZipcode("8694");
         house5.setAddress(address5);
