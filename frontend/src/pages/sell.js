@@ -96,7 +96,7 @@ const Sell = () => {
 
     // console.log(markets);
     // console.log(categories);
-    // console.log(propertyType);
+    console.log(propertyType);
     // console.log(categoryId);
 
     return (
@@ -187,20 +187,20 @@ const Sell = () => {
                                     <>
                                         {category.name === 'Residential' && (
                                             <>
-                                                <option value={category.id} key={category.id}>House</option>
-                                                <option value={category.id} key={category.name}>Apartment</option>
+                                                <option value={4} key={category.id}>House</option>
+                                                <option value={2} key={category.name}>Apartment</option>
                                             </>
                                         )}
                                         {category.name === 'Commercial' && (
                                             <>
-                                                <option value={category.id} key={category.id}>Office Space</option>
-                                                <option value={category.id} key={category.name}>Warehouse</option>
+                                                <option value={5} key={category.id}>Office Space</option>
+                                                <option value={6} key={category.name}>Warehouse</option>
                                             </>
                                         )}
                                         {category.name === 'Land' && (
                                             <>
-                                                <option value={category.id} key={category.id}>Urban Area</option>
-                                                <option value={category.id} key={category.name}>Farm</option>
+                                                <option value={7} key={category.id}>Urban Area</option>
+                                                <option value={8} key={category.name}>Farm</option>
                                             </>
                                         )}
                                     </>
@@ -209,8 +209,6 @@ const Sell = () => {
                         </select>
                     </div>
                 )}
-
-
 
 
                 <div className="mb-4">
