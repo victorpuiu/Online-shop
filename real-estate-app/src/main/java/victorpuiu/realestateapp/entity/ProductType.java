@@ -20,7 +20,9 @@ public enum ProductType {
 //    RESIDENTIAL,
     HOUSE,
     OFFICE_SPACE,
-    WAREHOUSE
+    WAREHOUSE,
+    URBAN_AREA,
+    FARM
     ;
 
 
