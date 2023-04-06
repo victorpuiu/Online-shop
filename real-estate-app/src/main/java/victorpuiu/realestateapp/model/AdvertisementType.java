@@ -1,4 +1,4 @@
-package victorpuiu.realestateapp.entity;
+package victorpuiu.realestateapp.model;
 
 /**
  * Determine if the advertisement is for rent or for sale

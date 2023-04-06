@@ -5,13 +5,15 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import victorpuiu.realestateapp.dto.*;
-import victorpuiu.realestateapp.entity.AdvertisementType;
-import victorpuiu.realestateapp.entity.ProductType;
+import victorpuiu.realestateapp.model.AdvertisementType;
+import victorpuiu.realestateapp.model.ProductType;
 import victorpuiu.realestateapp.repository.UserRepository;
 import victorpuiu.realestateapp.service.MarketCategoryService;
 import victorpuiu.realestateapp.service.MarketService;
 import victorpuiu.realestateapp.service.ProductService;
 import victorpuiu.realestateapp.service.UserService;
+
+import java.util.Arrays;
 
 
 @Component
@@ -59,6 +61,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         residential.setImageUrl("https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU");
         residential.setRedirectLink("/residential");
         residential.setMarketId(realEstateMarket.getId());
+        residential.setProductTypes(Arrays.asList(ProductType.APARTMENT, ProductType.HOUSE));
         residential = marketCategoryService.saveOrEdit(residential);
 
         MarketCategoryDto commercial = new MarketCategoryDto();
@@ -66,6 +69,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         commercial.setImageUrl("https://fastly.picsum.photos/id/43/1280/831.jpg?hmac=glK-rQ0ppFClW-lvjk9FqEWKog07XkOxJf6Xg_cU9LI");
         commercial.setRedirectLink("/commercial");
         commercial.setMarketId(realEstateMarket.getId());
+        commercial.setProductTypes(Arrays.asList(ProductType.OFFICE_SPACE, ProductType.WAREHOUSE));
         commercial = marketCategoryService.saveOrEdit(commercial);
 
         MarketCategoryDto land = new MarketCategoryDto();
@@ -73,6 +77,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         land.setImageUrl("https://fastly.picsum.photos/id/46/3264/2448.jpg?hmac=ZHE8nk-Q9uRp4MxgKNvN7V7pYFvA-9BCv99ltY3HBv4");
         land.setRedirectLink("/land");
         land.setMarketId(realEstateMarket.getId());
+
         land = marketCategoryService.saveOrEdit(land);
 
 

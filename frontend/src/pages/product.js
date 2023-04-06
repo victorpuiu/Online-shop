@@ -35,7 +35,7 @@ const Product = () => {
     }, [idProduct, idCategory, idMarketplace]);
 
 
-    console.log(product);
+    // console.log(product);
 
     if (!product) {
         return <div>Loading...</div>;

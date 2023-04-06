@@ -3,8 +3,8 @@ package victorpuiu.realestateapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import victorpuiu.realestateapp.entity.AdvertisementType;
-import victorpuiu.realestateapp.entity.ProductType;
+import victorpuiu.realestateapp.model.AdvertisementType;
+import victorpuiu.realestateapp.model.ProductType;
 
 /**
  * The resource representing a property.

@@ -9,9 +9,10 @@ const Products = () => {
     const {idMarketplace} = useParams();
     const {idCategory} = useParams();
 
+    const [province, setProvince] = useState("state");
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
-    const [province, setProvince] = useState(1);
-
+    const [residentialType, setResidentialType] = useState("All Type");
 
     useEffect(() => {
 
@@ -19,6 +20,7 @@ const Products = () => {
             .then(response => {
                 sessionStorage.setItem("products", JSON.stringify(response.data));
                 setProducts(response.data);
+                setFilteredProducts(response.data);
             })
             .catch(error => {
                 console.error(error);
@@ -27,18 +29,28 @@ const Products = () => {
     }, [idMarketplace, idCategory]);
 
 
+    // const filteredProducts = province === 1 ? products : products.filter(product => product.address.city === province);
+
     useEffect(() => {
-        axios.get(`http://localhost:8080/markets/${idMarketplace}/categories/${idCategory}/products/${province}`)
-            .then(response => {
-                console.log(response.data);
-                // setProducts(response.data);
-            })
+        let filtered = products;
+        if (province !== "state"){
+            filtered = filtered.filter(product => product.address.city === province);
+            // console.log(filtered);
+        }
+        if (residentialType !== "All Type"){
+            filtered = filtered.filter(product => product.propertyType === residentialType);
+            }
 
-    }, [province]);
 
+        // console.log(residentialType);
+        setFilteredProducts(filtered);
 
-    // console.log(products);
-    console.log(province);
+    }, [province, residentialType]);
+
+    // console.log(products.map(product => product.id));
+    // console.log(province);
+    // console.log(filteredProducts);
+    // console.log(residentialType);
 
     return (
 
@@ -50,7 +62,14 @@ const Products = () => {
                     </p>
 
                     <button
-                        className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+                        className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
+                        onClick={(e) => {
+                            setProvince("state");
+                            setResidentialType("All Type");
+                        }
+
+                    }
+                    >
                         Reset Filter
                     </button>
                 </div>
@@ -65,20 +84,25 @@ const Products = () => {
                                 setProvince(e.target.value);
                             }}
                         >
-                            <option value={1}>State/Province</option>
+                            <option value="state">State/Province</option>
                             {/*{[...new Set(products.map(product => product.address.city))].map(city => (*/}
                             {/*    <option value={city} key={city}>{city}</option>*/}
                             {/*))*/}
                             {/*}*/}
                             {products.map(product => (
-                                <option value={product.id} key={product.id}>{product.address.city}</option>
+                                <option value={product.address.city} key={product.id}>{product.address.city}</option>
                             ))}
                         </select>
                         <select
-                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-                            <option value="">All Type</option>
-                            <option value="house">House</option>
-                            <option value="apartment">Apartment</option>
+                            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                            onChange={(e) => {
+                                setResidentialType(e.target.value);
+                            }
+                            }
+                        >
+                            <option value="All type">All Type</option>
+                            <option value="HOUSE">House</option>
+                            <option value="APARTMENT">Apartment</option>
                         </select>
 
                         <select
@@ -105,7 +129,7 @@ const Products = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-2xl font-bold mb-4">Properties</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {products.map(product => (
+                        {filteredProducts.map(product => (
                             <Link to={`/marketplaces/${idMarketplace}/categories/${idCategory}/products/${product.id}`}
                                   key={product.id}>
                                 <div
@@ -128,9 +152,7 @@ const Products = () => {
                     </div>
                 </div>
 
-
             </div>
-
 
         </>
 

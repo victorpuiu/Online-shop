@@ -54,7 +54,7 @@ public class ProductController {
 
     @PostMapping("saveOrEdit")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto,
-                                                    @PathVariable("marketId") long marketId){
+                                                    @PathVariable("marketId") long marketId, @PathVariable("categoryId") long marketCategoryId ){
         //validate the input
         if (productDto.getPropertyType() == null || productDto.getPropertyType().toString().isEmpty()){
             throw new IllegalArgumentException("Property cannot be empty");
@@ -70,6 +70,7 @@ public class ProductController {
 
         MarketCategoryDto marketCategoryDto = new MarketCategoryDto();
         marketCategoryDto.setMarketId(marketId);
+        marketCategoryDto.setId(marketCategoryId);
         productDto.setMarketCategoryDto(marketCategoryDto);
 
         // Save the property to the database

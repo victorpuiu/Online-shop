@@ -44,6 +44,9 @@ const Sell = () => {
         }
     }
     const loadCategoriesAndCategoryId = async () => {
+        if (!marketId){
+            return;
+        }
         const response = await axios.get("http://localhost:8080/markets/" + marketId + "/categories");
         // console.log(response.data);
         if (response.data) {
@@ -96,7 +99,7 @@ const Sell = () => {
 
     // console.log(markets);
     // console.log(categories);
-    console.log(propertyType);
+    // console.log(propertyType);
     // console.log(categoryId);
 
     return (

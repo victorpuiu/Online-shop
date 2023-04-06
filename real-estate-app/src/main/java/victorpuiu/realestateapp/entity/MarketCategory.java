@@ -4,6 +4,7 @@ package victorpuiu.realestateapp.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import victorpuiu.realestateapp.model.ProductType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,8 @@ public class MarketCategory {
 
     @ManyToOne
     private Market market;
+
+    private List<ProductType> productTypes;
 
     private String name;
 
