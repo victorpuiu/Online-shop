@@ -47,7 +47,7 @@ const Products = () => {
 
     }, [province, residentialType]);
 
-    // console.log(products.map(product => product.id));
+    console.log(products);
     // console.log(province);
     // console.log(filteredProducts);
     // console.log(residentialType);

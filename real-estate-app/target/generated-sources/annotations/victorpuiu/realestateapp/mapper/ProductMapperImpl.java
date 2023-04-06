@@ -12,7 +12,7 @@ import victorpuiu.realestateapp.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-02T21:34:17+0300",
+    date = "2023-04-06T20:06:49+0300",
     comments = "version: 1.5.0.Final, compiler: javac, environment: Java 19.0.1 (Oracle Corporation)"
 )
 public class ProductMapperImpl implements ProductMapper {
@@ -26,7 +26,6 @@ public class ProductMapperImpl implements ProductMapper {
         ProductDto productDto = new ProductDto();
 
         productDto.setId( product.getId() );
-        productDto.setPropertyType( product.getPropertyType() );
         productDto.setDescription( product.getDescription() );
         productDto.setPrice( product.getPrice() );
         productDto.setAddress( addressToAddressDto( product.getAddress() ) );
@@ -47,7 +46,6 @@ public class ProductMapperImpl implements ProductMapper {
 
         product.setMarketCategory( marketCategoryDtoToMarketCategory( productDto.getMarketCategoryDto() ) );
         product.setId( productDto.getId() );
-        product.setPropertyType( productDto.getPropertyType() );
         product.setDescription( productDto.getDescription() );
         product.setPrice( productDto.getPrice() );
         product.setUser( userDtoToUser( productDto.getUser() ) );

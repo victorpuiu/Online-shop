@@ -77,7 +77,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         land.setImageUrl("https://fastly.picsum.photos/id/46/3264/2448.jpg?hmac=ZHE8nk-Q9uRp4MxgKNvN7V7pYFvA-9BCv99ltY3HBv4");
         land.setRedirectLink("/land");
         land.setMarketId(realEstateMarket.getId());
-
+        land.setProductTypes(Arrays.asList(ProductType.URBAN_AREA, ProductType.FARM));
         land = marketCategoryService.saveOrEdit(land);
 
 
