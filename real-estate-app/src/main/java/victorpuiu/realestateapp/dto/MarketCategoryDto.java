@@ -20,7 +20,9 @@ public class MarketCategoryDto {
 
     private String redirectLink;
 
-    private List<ProductType> productTypes;
+    private List<ProductType> productTypes; // private List<ProductTypeEntityDto> productTypes;
+
+
 
 
 //    private List<ProductDto> products = new ArrayList<>();
