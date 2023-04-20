@@ -4,7 +4,6 @@ package victorpuiu.realestateapp.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import victorpuiu.realestateapp.model.ProductType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,8 @@ public class MarketCategory {
     @ManyToOne
     private Market market;
 
-    private List<ProductType> productTypes;
+    @OneToMany(mappedBy = "marketCategory")
+    private List<ProductTypeEntity> productTypeEntities;
 
     private String name;
 
