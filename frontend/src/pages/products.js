@@ -47,7 +47,9 @@ const Products = () => {
 
     }, [province, residentialType]);
 
-    console.log(products);
+
+    // console.log(idCategory);
+    // console.log(products);
     // console.log(province);
     // console.log(filteredProducts);
     // console.log(residentialType);
