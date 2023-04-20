@@ -12,7 +12,7 @@ import victorpuiu.realestateapp.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-06T20:06:49+0300",
+    date = "2023-04-20T09:31:44+0300",
     comments = "version: 1.5.0.Final, compiler: javac, environment: Java 19.0.1 (Oracle Corporation)"
 )
 public class ProductMapperImpl implements ProductMapper {
