@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import Category from "../components/Category";
+import Content from "../images/deleted/Content";
 
 const Categories = () => {
 
@@ -47,6 +48,9 @@ const Categories = () => {
     //     beforeChange: (current, next) => setImageIndex(next),
     // };
     //
+
+    // console.log(categories);
+
 
     return (
         <>
@@ -104,7 +108,7 @@ const Categories = () => {
             {/*    </div>*/}
             {/*</div>*/}
 
-            {/*<Content />*/}
+            <Content />
 
 
         </>
