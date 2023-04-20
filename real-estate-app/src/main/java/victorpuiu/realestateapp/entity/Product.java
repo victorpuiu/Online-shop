@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import victorpuiu.realestateapp.model.AdvertisementType;
-import victorpuiu.realestateapp.model.ProductType;
 
 import java.sql.Timestamp;
 
@@ -20,7 +19,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private ProductType propertyType;
+    @OneToOne
+    private ProductTypeEntity productTypeEntity;
 
     private String description;
 
