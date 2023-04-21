@@ -12,6 +12,7 @@ import java.util.List;
 public class MarketCategoryDto {
 
     public Long id;
+
     private Long marketId;
 
     private String name;

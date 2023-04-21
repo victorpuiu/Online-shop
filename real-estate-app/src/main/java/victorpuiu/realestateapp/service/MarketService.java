@@ -10,7 +10,6 @@ public interface MarketService {
 
     void deleteById(long id);
 
-
     List<MarketDto> getMarkets();
 
     MarketDto saveOrEdit(MarketDto marketDto);
