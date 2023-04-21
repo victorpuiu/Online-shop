@@ -1,9 +1,13 @@
 import React, {useRef, useState} from 'react'
 import Button3b from "../components/Button3b";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
 
     const [isForm, setIsForm] = useState({
         login: true,
@@ -25,6 +29,8 @@ const Login = () => {
                 password: signInPasswordRef.current.value
             });
             console.log("Login successful");
+            navigate("/");
+
         } catch (error){
             console.log("Login failed: " + error.message);
         }
@@ -41,6 +47,7 @@ const Login = () => {
         try {
             const response = await axios.post("http://localhost:8080/user/newUser", newUser);
             console.log(response.data);
+            navigate("/");
         } catch (error) {
             console.log(error);
 
