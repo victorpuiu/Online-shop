@@ -97,7 +97,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
         UserDto user = new UserDto();
         UserRegistrationRequest user1 = new UserRegistrationRequest();
-        user1.setUsername("dan");
+        user1.setUsername("joe@black.com");
         user1.setPassword("1234");
         user1.setEmail("joe@black.com");
         user = userService.createUser(user1);
