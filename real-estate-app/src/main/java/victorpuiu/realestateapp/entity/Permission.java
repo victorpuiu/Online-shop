@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import victorpuiu.realestateapp.model.PermissionLevel;
+import victorpuiu.realestateapp.model.Role;
 
 /**
  * The account resource with specified user details
@@ -18,5 +18,5 @@ public class Permission {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private PermissionLevel permissionLevel;
+    private Role role;
 }
