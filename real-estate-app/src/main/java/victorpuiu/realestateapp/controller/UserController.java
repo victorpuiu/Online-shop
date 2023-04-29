@@ -20,6 +20,12 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    @GetMapping
+    public String user() {
+        return "Hello, user !";
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable long id) {
         UserDto user = userService.getUserById(id);
