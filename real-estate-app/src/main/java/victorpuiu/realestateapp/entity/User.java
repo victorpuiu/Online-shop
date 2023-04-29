@@ -28,7 +28,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Product> products;
 
-
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    @Enumerated(EnumType.STRING)
+//    private Set<Role> roles;
 
 
 
