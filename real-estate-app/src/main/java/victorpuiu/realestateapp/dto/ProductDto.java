@@ -16,7 +16,7 @@ public class ProductDto {
 
     private Long id;
 
-    private ProductType propertyType;
+    private ProductType propertyType;  //private ProductTypeDto;
 
     private String description;
 
