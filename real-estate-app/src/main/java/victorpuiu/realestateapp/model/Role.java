@@ -4,7 +4,7 @@ package victorpuiu.realestateapp.model;
 /**
  * Define the level of permission user has
  */
-public enum PermissionLevel {
+public enum Role {
 
     ADMIN("ADMIN"),
     MODERATOR("MODERATOR"),
@@ -14,7 +14,7 @@ public enum PermissionLevel {
     private String value;
 
 
-    PermissionLevel(String value) {
+    Role(String value) {
         this.value = value;
     }
 
@@ -25,8 +25,8 @@ public enum PermissionLevel {
 
 
 
-    public static PermissionLevel fromValue(final String value){
-        for (final PermissionLevel type: PermissionLevel.values()){
+    public static Role fromValue(final String value){
+        for (final Role type: Role.values()){
             if (type.getValue().equals(value)){
                 return type;
             }
