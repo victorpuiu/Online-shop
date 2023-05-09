@@ -96,3 +96,7 @@ Overall, Micronaut is a great choice if you need a lightweight and fast framewor
 
 
 ![Screenshot.png](resources/Screenshot.png)
+![Screenshot.png](resources/ScreenshotA.png)
+![Screenshot.png](resources/ScreenshotB.png)
+![Screenshot.png](resources/ScreenshotC.png)
+![Screenshot.png](resources/ScreenshotD.png)
